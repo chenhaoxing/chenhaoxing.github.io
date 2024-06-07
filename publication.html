@@ -1,637 +1,434 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-<meta name="robots" content="index, follow" />
-<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta name="keywords" content="Haoxing Chen, 陈昊星, few-shot learning, metric-learning, self-supervised learning, computer vision, machine learning, Nanjing University">
-<link rel="stylesheet" href="./Files/jemdoc.css" type="text/css" />	
-<script src="jquery.min.js"></script>
-<head>
-	<style type="text/css">
-            body{margin: 20px 140px;}
-		h2{color:rgb(24,144,255);}
-		a{text-decoration:underline}
-		a:link {
-			color:#e7767f;
-			text-decoration:none;
-		}
-		:visited {
-			color:grey;
-			text-decoration:none;
-		}
-		a:hover {
-			color:orange;
-			text-decoration:none;
-		}
-		
-		a:active {
-			color:black;
-			text-decoration:none;
-		}
-		*{ 
- padding: 0px; margin: 0px; } .nav{ 
- list-style: none; /*background-color:rgb(24,144,255);*//*给整个列表设置蓝色背景*/ /*width: 1200px;*/ /*height: 45px;*/ margin: 20px auto; overflow: hidden; zoom: 1; } .nav li{ 
- float: left; width: 13%; } .nav a{ 
- width: 100%; display: inline-block; text-align: center; padding: 5px 0px; text-decoration: none; color: Black; font-weight: bold} .nav a:hover{ 
- background-color:rgb(24,144,255);color: White; } 
-        </style>
-	<link rel="icon" href="./Files/mambaicon.png"></head>
-	
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2XT9RY7121"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<!DOCTYPE html>
+<html>
 
-  gtag('config', 'G-2XT9RY7121');
-</script>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Haoxing Chen's Publication</title>
+  <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+  <link rel="shortcut icon" type="./Files/mambaicon.png" href="images/misc/favicon.png">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <!-- Bulma Version 0.7.5-->
+  <link rel="stylesheet" href="https://unpkg.com/bulma@0.7.5/css/bulma.min.css" />
+  <link href='css/style.css?_t=20200916' rel='stylesheet' type='text/css'>
+  <script defer src="font-awesome/js/brands.min.js"></script>
+  <script defer src="font-awesome/js/regular.min.js"></script>
+  <script defer src="font-awesome/js/fontawesome.min.js"></script>
+  <style>
+    .red {
+      color: rgb(238, 76, 44);
+      font-style: normal;
+    }
+
+    .blue {
+      color: rgb(238, 76, 44);
+      font-style: normal.
+    }
+
+    #intro {
+      margin-top: 0em !important;
+    }
+
+    .content h3 {
+      margin-bottom: 1em!important;
+      margin-top: 2em!important;
+    }
+
+    .columns:not(:last-child) {
+      margin-bottom: 1.75rem!important;
+    }
+
+    #sidebar {
+      width: 75%;
+    }
+
+    @media screen and (min-width: 769px),
+    print {
+      .column.is-2_5,
+      .column.is-2-tablet {
+        flex: none;
+        width: 20%;
+      }
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
+</head>
 
 <body>
-
- <h2 id="-Pre">Preprints</h2>
-        
-        <ol>
-
-		<table class="imgtable">
-                <tbody>
-                    <tr>
-                        <td>
-                            <img src="./Files/VFOD.png" alt="WSFG" width="220px" height="110px"  style="box-shadow: 4px 4px 8px #888">
-                            &nbsp;
-                        </td>
-                        <td align="left">
-                            <ul>
-                                <li>
-                                    <p>
-                                        <b>Haoxing Chen</b>, Yan Hong, Zizheng Huang, Zhuoer Xu, Zhangxuan Gu, Yaohui Li, Jun Lan, Huijia Zhu, Jianfu Zhang, Weiqiang Wang, Huaxiong Li.
-                                        <br>
-                                        <a href="https://arxiv.org/pdf/2405.19707.pdf">DeMamba: AI-Generated Video Detection on Million-Scale GenVideo Benchmark.</a>
-                                        <br>
-                                        <em>arXiv preprint arXiv: 2405.19707</em>
-                                        , 2024.
-                                        <br>
-					    [<a href=" https://github.com/chenhaoxing/DeMamba" target="_blank">Code</a>]
-                                    </p>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>   
-		
-<table class="imgtable">
-                <tbody>
-                    <tr>
-                        <td>
-                            <img src="./Files/CPR.jpg" alt="WSFG" width="220px" height="110px"  style="box-shadow: 4px 4px 8px #888">
-                            &nbsp;
-                        </td>
-                        <td align="left">
-                            <ul>
-                                <li>
-                                    <p>
-                                        <b>Haoxing Chen</b>, Yaohui Li, Zizheng Huang, Yan Hong, 
-                                        Zhuoer Xu, Zhangxuan Gu,  Jun Lan, Huijia Zhu, Weiqiang Wang.
-                                        <br>
-                                        <a href="https://arxiv.org/pdf/2404.09872.pdf">Conditional Prototype Rectification Prompt Learning.</a>
-                                        <br>
-                                        <em>arXiv preprint arXiv: 2404.09872</em>
-                                        , 2024.
-                                        <br>
-					    [<a href=" https://github.com/chenhaoxing/CPR" target="_blank">Code</a>]
-                                    </p>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>   
-
-		
-<table class="imgtable">
-                <tbody>
-                    <tr>
-                        <td>
-                            <img src="./Files/KCL.jpg" alt="WSFG" width="220px" height="110px"  style="box-shadow: 4px 4px 8px #888">
-                            &nbsp;
-                        </td>
-                        <td align="left">
-                            <ul>
-                                <li>
-                                    <p>
-                                        Yaohui Li, Qifeng Zhou, <b>Haoxing Chen</b>, Jianbing Zhang, Xinyu Dai, Hao Zhou.
-                                        <br>
-                                        <a href="https://arxiv.org/pdf/2404.09778.pdf">The Devil is in the Few Shots: Iterative Visual
-Knowledge Completion for Few-shot Learning.</a>
-                                        <br>
-                                        <em>arXiv preprint arXiv: 2404.09778</em>
-                                        , 2024.
-                                        <br>
-                                    </p>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>   
-
-
-		
-<table class="imgtable">
-                <tbody>
-                    <tr>
-                        <td>
-                            <img src="./Files/ComFusion.jpg" alt="WSFG" width="220px" height="110px"  style="box-shadow: 4px 4px 8px #888">
-                            &nbsp;
-                        </td>
-                        <td align="left">
-                            <ul>
-                                <li>
-                                    <p>
-                                        Yan Hong, Yuxuan Duan, Bo Zhang, <b>Haoxing Chen</b>, Jun Lan, Huijia Zhu, Weiqiang Wang, Jianfu Zhang.
-                                        <br>
-                                        <a href="https://arxiv.org/abs/2402.11849">ComFusion: Personalized Subject Generation in Multiple Specific Scenes From
-Single Image.</a>
-                                        <br>
-                                        <em>arXiv preprint arXiv: 2402.11849</em>
-                                        , 2024.
-                                        <br>
-                                    </p>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>   
-
-
-
-		
-<table class="imgtable">
-                <tbody>
-                    <tr>
-                        <td>
-                            <img src="./Files/wildfake.jpg" alt="WSFG" width="220px" height="110px"  style="box-shadow: 4px 4px 8px #888">
-                            &nbsp;
-                        </td>
-                        <td align="left">
-                            <ul>
-                                <li>
-                                    <p>
-                                        Yan Hong, Jianming Feng, <b>Haoxing Chen</b>, Jun Lan, Huijia Zhu, Weiqiang Wang, Jianfu Zhang.
-                                        <br>
-                                        <a href="https://arxiv.org/abs/2402.11843">WildFake: A Large-scale Challenging Dataset for AI-Generated Images
-Detection.</a>
-                                        <br>
-                                        <em>arXiv preprint arXiv: 2402.11843</em>
-                                        , 2024.
-                                        <br>
-                                    </p>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>   
-
-
-
-
-
-		
-<table class="imgtable">
-                <tbody>
-                    <tr>
-                        <td>
-                            <img src="./Files/kda.jpg" alt="WSFG" width="220px" height="110px"  style="box-shadow: 4px 4px 8px #888">
-                            &nbsp;
-                        </td>
-                        <td align="left">
-                            <ul>
-                                <li>
-                                    <p>
-                                        <b>Haoxing Chen</b>, Yaohui Li, Yan Hong, Zizheng Huang,
-                                        Zhuoer Xu, Zhangxuan Gu,  Jun Lan, Huijia Zhu, Weiqiang Wang.
-                                        <br>
-                                        <a href="https://arxiv.org/abs/2311.12268">Boosting Audio-visual Zero-shot Learning with Large Language Models.</a>
-                                        <br>
-                                        <em>arXiv preprint arXiv: 2311.12268</em>
-                                        , 2023.
-                                        <br>
-                                        [<a href="./Files/KDA.pdf" target="_blank">Paper</a>]
-                                        [<a href="https://github.com/chenhaoxing/KDA" target="_blank">Code</a>]
-                                    </p>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>   
-
-		
-           
-            
-<table class="imgtable">
-                <tbody>
-                    <tr>
-                        <td>
-                            <img src="./Files/qpn.jpg" alt="WSFG" width="220px" height="110px"  style="box-shadow: 4px 4px 8px #888">
-                            &nbsp;
-                        </td>
-                        <td align="left">
-                            <ul>
-                                <li>
-                                    <p>
-                                        Yaohui Li
-                                        , Huaxiong Li, <b>Haoxing Chen</b>, Chunlin Chen.
-                                        <br>
-                                        <a href="https://arxiv.org/abs/2103.11384">Hierarchical Representation based Query-Specific Prototypical Network for Few-Shot Image Classification.</a>
-                                        <br>
-                                        <em>arXiv preprint arXiv: 2103.11384</em>
-                                        , 2021.
-                                        <br>
-                                        [<a href="./Files/qpn.pdf" target="_blank">Paper</a>]
-					[<a href="https://dblp.org/rec/journals/corr/abs-2103-11384.html?view=bibtex" arget="_blank">BibTex</a>]    
-                                    </p>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-    
-            
-        
-        </ol>
-<br />
+  <section class="section">
+    <div class="container">
+      <div class="content">
+        <!-- Preprints -->
+        <h2 id="-Pre">Preprints</h2>
+        <article class="columns">
+          <div class="column is-3">
+            <figure class="image">
+              <img src="./Files/VFOD.png" alt="WSFG" width="220px" height="110px" style="box-shadow: 4px 4px 8px #888;">
+            </figure>
+          </div>
+          <div class="column">
+            <div class="content">
+              <p>
+                <b>Haoxing Chen</b>, Yan Hong, Zizheng Huang, Zhuoer Xu, Zhangxuan Gu, Yaohui Li, Jun Lan, Huijia Zhu, Jianfu Zhang, Weiqiang Wang, Huaxiong Li.<br>
+                <a href="https://arxiv.org/pdf/2405.19707.pdf">DeMamba: AI-Generated Video Detection on Million-Scale GenVideo Benchmark.</a><br>
+                <i>arXiv preprint arXiv: 2405.19707</i>, 2024.<br>
+                [<a href=" https://github.com/chenhaoxing/DeMamba" target="_blank">Code</a>]
+              </p>
+            </div>
+          </div>
+        </article>
+        <article class="columns">
+          <div class="column is-3">
+            <figure class="image">
+              <img src="./Files/CPR.jpg" alt="WSFG" width="220px" height="110px" style="box-shadow: 4px 4px 8px #888;">
+            </figure>
+          </div>
+          <div class="column">
+            <div class="content">
+              <p>
+                <b>Haoxing Chen</b>, Yaohui Li, Zizheng Huang, Yan Hong, Zhuoer Xu, Zhangxuan Gu, Jun Lan, Huijia Zhu, Weiqiang Wang.<br>
+                <a href="https://arxiv.org/pdf/2404.09872.pdf">Conditional Prototype Rectification Prompt Learning.</a><br>
+                <i>arXiv preprint arXiv: 2404.09872</i>, 2024.<br>
+                [<a href=" https://github.com/chenhaoxing/CPR" target="_blank">Code</a>]
+              </p>
+            </div>
+          </div>
+        </article>
+        <article class="columns">
+          <div class="column is-3">
+            <figure class="image">
+              <img src="./Files/KCL.jpg" alt="WSFG" width="220px" height="110px" style="box-shadow: 4px 4px 8px #888;">
+            </figure>
+          </div>
+          <div class="column">
+            <div class="content">
+              <p>
+                Yaohui Li, Qifeng Zhou, <b>Haoxing Chen</b>, Jianbing Zhang, Xinyu Dai, Hao Zhou.<br>
+                <a href="https://arxiv.org/pdf/2404.09778.pdf">The Devil is in the Few Shots: Iterative Visual Knowledge Completion for Few-shot Learning.</a><br>
+                <i>arXiv preprint arXiv: 2404.09778</i>, 2024.
+              </p>
+            </div>
+          </div>
+        </article>
+        <article class="columns">
+          <div class="column is-3">
+            <figure class="image">
+              <img src="./Files/ComFusion.jpg" alt="WSFG" width="220px" height="110px" style="box-shadow: 4px 4px 8px #888;">
+            </figure>
+          </div>
+          <div class="column">
+            <div class="content">
+              <p>
+                Yan Hong, Yuxuan Duan, Bo Zhang, <b>Haoxing Chen</b>, Jun Lan, Huijia Zhu, Weiqiang Wang, Jianfu Zhang.<br>
+                <a href="https://arxiv.org/abs/2402.11849">ComFusion: Personalized Subject Generation in Multiple Specific Scenes From Single Image.</a><br>
+                <i>arXiv preprint arXiv: 2402.11849</i>, 2024.
+              </p>
+            </div>
+          </div>
+        </article>
+        <article class="columns">
+          <div class="column is-3">
+            <figure class="image">
+              <img src="./Files/wildfake.jpg" alt="WSFG" width="220px" height="110px" style="box-shadow: 4px 4px 8px #888;">
+            </figure>
+          </div>
+          <div class="column">
+            <div class="content">
+              <p>
+                Yan Hong, Jianming Feng, <b>Haoxing Chen</b>, Jun Lan, Huijia Zhu, Weiqiang Wang, Jianfu Zhang.<br>
+                <a href="https://arxiv.org/abs/2402.11843">WildFake: A Large-scale Challenging Dataset for AI-Generated Images Detection.</a><br>
+                <i>arXiv preprint arXiv: 2402.11843</i>, 2024.
+              </p>
+            </div>
+          </div>
+        </article>
+        <article class="columns">
+          <div class="column is-3">
+            <figure class="image">
+              <img src="./Files/kda.jpg" alt="WSFG" width="220px" height="110px" style="box-shadow: 4px 4px 8px #888;">
+            </figure>
+          </div>
+          <div class="column">
+            <div class="content">
+              <p>
+                <b>Haoxing Chen</b>, Yaohui Li, Yan Hong, Zizheng Huang, Zhuoer Xu, Zhangxuan Gu, Jun Lan, Huijia Zhu, Weiqiang Wang.<br>
+                <a href="https://arxiv.org/abs/2311.12268">Boosting Audio-visual Zero-shot Learning with Large Language Models.</a><br>
+                <i>arXiv preprint arXiv: 2311.12268</i>, 2023.<br>
+                [<a href="./Files/KDA.pdf" target="_blank">Paper</a>] [<a href="https://github.com/chenhaoxing/KDA" target="_blank">Code</a>]
+              </p>
+            </div>
+          </div>
+        </article>
+        <!-- Top Conference/Journal Publications -->
         <h2 id="-Pub">Top Conference/Journal Publications (ICML/NeurIPS/CVPR/ACM MM/ICASSP etc.)</h2>
+        <article class="columns">
+          <div class="column is-3">
+            <figure class="image">
+              <img src="./Files/srin.jpg" alt="WSFG" width="220px" height="110px" style="box-shadow: 4px 4px 8px #888;">
+            </figure>
+          </div>
+          <div class="column">
+            <div class="content">
+              <p>
+                <b>Haoxing Chen</b>, Yaohui Li, Zhangxuan Gu, Zhuoer Xu, Jun Lan, Huaxiong Li.<br>
+                <a href="https://arxiv.org/abs/2312.12729">Segment Anything Model Meets Image Harmonization.</a><br>
+                In: <i>IEEE International Conference on Acoustics, Speech and Signal Processing (<b>ICASSP</b>)</i>, 2024. (<b>CCF-B</b>)<br>
+                [<a href="./Files/SRIN_ICASSP24.pdf" target="_blank">Paper</a>] [<a href="https://dblp.org/rec/journals/corr/abs-2312-12729.html?view=bibtex" target="_blank">BibTex</a>]
+              </p>
+            </div>
+          </div>
+        </article>
+        <article class="columns">
+          <div class="column is-3">
+            <figure class="image">
+              <img src="./Files/arch.jpeg" alt="WSFG" width="220px" height="110px" style="box-shadow: 4px 4px 8px #888;">
+            </figure>
+          </div>
+          <div class="column">
+            <div class="content">
+              <p>
+                Zhangxuan Gu, <b>Haoxing Chen</b>, Zhuoer Xu, Jun Lan, Changhua Meng, Weiqiang Wang.<br>
+                <a href="https://arxiv.org/abs/2212.02773">DiffusionInst: Diffusion Model for Instance Segmentation.</a><br>
+                In: <i>IEEE International Conference on Acoustics, Speech and Signal Processing (<b>ICASSP</b>)</i>, 2024. (<b>CCF-B</b>)<br>
+                [<a href="./Files/Diffusioninst.pdf" target="_blank">Paper</a>] [<a href="https://github.com/chenhaoxing/DiffusionInst" target="_blank">Code</a>] [<a href="https://github.com/ant-research/diffusion-model-for-instance-segmentation" target="_blank">Code (Ant-Research)</a>] [<a href="https://dblp.org/rec/journals/corr/abs-2212-02773.html?view=bibtex" target="_blank">BibTex</a>]
+              </p>
+            </div>
+          </div>
+        </article>
+        <article class="columns">
+          <div class="column is-3">
+            <figure class="image">
+              <img src="./Files/DiffUTE.jpg" alt="WSFG" width="220px" height="110px" style="box-shadow: 4px 4px 8px #888;">
+            </figure>
+          </div>
+          <div class="column">
+            <div class="content">
+              <p>
+                <b>Haoxing Chen</b>, Zhuoer Xu, Zhangxuan Gu, Jun Lan, Xing Zheng, Yaohui Li, Changhua Meng, Huijia Zhu, Weiqiang Wang.<br>
+                <a href="https://arxiv.org/abs/2305.10825">DiffUTE: Universal Text Editing Diffusion Model.</a><br>
+                In: <i>Thirty-seventh Conference on Neural Information Processing Systems (<b>NeurIPS</b>)</i>, 2023. (<b>CCF-A</b>)<br>
+                [<a href="./Files/DiffUTE.pdf" target="_blank">Paper</a>] [<a href=" https://github.com/chenhaoxing/DiffUTE" target="_blank">Code</a>] [<a href=" https://www.bilibili.com/video/BV1wT4y1h7c7/" target="_blank">Video</a>]
+              </p>
+            </div>
+          </div>
+        </article>
+        <article class="columns">
+          <div class="column is-3">
+            <figure class="image">
+              <img src="./Files/hd.jpg" alt="WSFG" width="220px" height="110px" style="box-shadow: 4px 4px 8px #888;">
+            </figure>
+          </div>
+          <div class="column">
+            <div class="content">
+              <p>
+                <b>Haoxing Chen</b>, Zhangxuan Gu, Yaohui Li, Jun Lan, Changhua Meng, Weiqiang Wang, Huaxiong Li.<br>
+                <a href="https://arxiv.org/abs/2211.08639">Hierarchical Dynamic Image Harmonization.</a><br>
+                In: <i>ACM Multimedia (<b>ACM MM</b>)</i>, 2023. [<b>Oral</b>] (<b>CCF-A</b>)<br>
+                [<a href="./Files/HDNet.pdf" target="_blank">Paper</a>] [<a href=" https://github.com/chenhaoxing/HDNet" target="_blank">Code</a>] [<a href="hhttps://dblp.org/rec/journals/corr/abs-2211-08639.html?view=bibtex" target="_blank">BibTex</a>]
+              </p>
+            </div>
+          </div>
+        </article>
+        <article class="columns">
+          <div class="column is-3">
+            <figure class="image">
+              <img src="./Files/macl.jpg" alt="WSFG" width="220px" height="110px" style="box-shadow: 4px 4px 8px #888;">
+            </figure>
+          </div>
+          <div class="column">
+            <div class="content">
+              <p>
+                Zizheng Huang<sup>#</sup>, <b>Haoxing Chen <sup>#</sup>*</b>, Ziqi Wen, Chao Zhang, Huaxiong Li, Bo Wang, Chunlin Chen.<br>
+                <a href="https://arxiv.org/abs/2207.07874">Model-Aware Contrastive Learning: Towards Escaping the Dilemmas.</a><br>
+                In: <i>International Conference on Machine Learning (<b>ICML</b>)</i>, 2023. (<b>CCF-A</b>) [# Equal contribution, * Corresponding author]<br>
+                [<a href="./Files/macl.pdf" target="_blank">Paper</a>] [<a href="https://github.com/chenhaoxing/MACL_ICML2023" target="_blank">Code</a>]
+              </p>
+            </div>
+          </div>
+        </article>
+        <article class="columns">
+          <div class="column is-3">
+            <figure class="image">
+              <img src="./Files/apt2023.jpg" alt="WSFG" width="220px" height="110px" style="box-shadow: 4px 4px 8px #888;">
+            </figure>
+          </div>
+          <div class="column">
+            <div class="content">
+              <p>
+                Zhangxuan Gu, Zhuoer Xu, <b>Haoxing Chen</b>, Jun Lan, Changhua Meng, Weiqiang Wang.<br>
+                <a href="https://openaccess.thecvf.com/content/CVPR2023/papers/Gu_Mobile_User_Interface_Element_Detection_via_Adaptively_Prompt_Tuning_CVPR_2023_paper.pdf">Mobile User Interface Element Detection Via Adaptively Prompt Tuning.</a><br>
+                In: <i>IEEE Conference on Computer Vision and Pattern Recognition (<b>CVPR</b>)</i>, 2023. (<b>CCF-A</b>)<br>
+                [<a href="./Files/CVPR23.pdf" target="_blank">Paper</a>] [<a href="https://github.com/antmachineintelligence/MUI-zh" target="_blank">Code</a>] [<a href="https://dblp.org/rec/conf/cvpr/GuXCLMW23.html?view=bibtex" target="_blank">BibTex</a>]
+              </p>
+            </div>
+          </div>
+        </article>
+        <article class="columns">
+          <div class="column is-3">
+            <figure class="image">
+              <img src="./Files/ss.png" alt="WSFG" width="220px" height="110px" style="box-shadow: 4px 4px 8px #888;">
+            </figure>
+          </div>
+          <div class="column">
+            <div class="content">
+              <p>
+                <b>Haoxing Chen</b>, Huaxiong Li, Yaohui Li, Chunlin Chen.<br>
+                <a href="http://engine.scichina.com/doi/10.1007/s11432-022-3700-8">Sparse Spatial Transformers for Few-Shot Learning.</a><br>
+                <i>Sci. China Inf. Sci.</i>, 2023, 66(11): 210102. (<b>CCF-A, SCI/SCIE, Impact Factor: 8.8</b>)<br>
+                [<a href="./Files/chx-ssformers.pdf" target="_blank">Paper</a>] [<a href=" https://github.com/chenhaoxing/ssformers" target="_blank">Code</a>] [<a href="https://dblp.org/rec/journals/corr/abs-2109-12932.html?view=bibtex" target="_blank">BibTex</a>]
+              </p>
+            </div>
+          </div>
+        </article>
+        <article class="columns">
+          <div class="column is-3">
+            <figure class="image">
+              <img src="./Files/mm_tapp.png" alt="WSFG" width="220px" height="110px" style="box-shadow: 4px 4px 8px #888;">
+            </figure>
+          </div>
+          <div class="column">
+            <div class="content">
+              <p>
+                Yaohui Li, Yuzhe Yang, Huaxiong Li, <b>Haoxing Chen</b>, Liwu Xu, Leida Li, Yaqian Li, Yandong Guo.<br>
+                <a href="https://dl.acm.org/doi/10.1145/3503161.3548244">Transductive Aesthetic Preference Propagation for Personalized Image Aesthetics Assessment.</a><br>
+                In: <i>ACM Multimedia (<b>ACM MM</b>)</i>, 2022. (<b>CCF-A</b>)<br>
+                [<a href="./Files/TAPP-PIAA.pdf" target="_blank">Paper</a>] [<a href="https://dblp.org/rec/conf/mm/LiYLCXLLG22.html?view=bibtex" target="_blank">BibTex</a>]
+              </p>
+            </div>
+          </div>
+        </article>
+        <!-- Other Conference/Journal Publications -->
+        <h2 id="-Pub">Other Conference/Journal Publications</h2>
+        <article class="columns">
+          <div class="column is-3">
+            <figure class="image">
+              <img src="./Files/asl.png" alt="WSFG" width="220px" height="110px" style="box-shadow: 4px 4px 8px #888;">
+            </figure>
+          </div>
+          <div class="column">
+            <div class="content">
+              <p>
+                <b>Haoxing Chen</b>, Huaxiong Li, Yaohui Li, Chunlin Chen.<br>
+                <a href="https://ieeexplore.ieee.org/document/9790054">Shaping Visual Representations with Attributes for Few-Shot Recognition.</a><br>
+                <i>IEEE Signal Process. Lett.</i>, 2022, 29: 1397-1401. (<b>CAA-B, SCI/SCIE, Impact Factor: 3.9</b>)<br>
+                [<a href="./Files/asl.pdf" target="_blank">Paper</a>] [<a href="https://github.com/chenhaoxing/ASL" target="_blank">Code</a>] [<a href="https://dblp.org/rec/journals/spl/ChenLLC22.html?view=bibtex" target="_blank">BibTex</a>]
+              </p>
+            </div>
+          </div>
+        </article>
+        <article class="columns">
+          <div class="column is-3">
+            <figure class="image">
+              <img src="./Files/mml.png" alt="WSFG" width="220px" height="110px" style="box-shadow: 4px 4px 8px #888;">
+            </figure>
+          </div>
+          <div class="column">
+            <div class="content">
+              <p>
+                <b>Haoxing Chen</b>, Huaxiong Li, Yaohui Li, Chunlin Chen.<br>
+                <a href="https://link.springer.com/chapter/10.1007/978-3-031-15919-0_21">Multi-level Metric Learning for Few-shot Image Recognition.</a><br>
+                In: <i>International Conference on Artificial Neural Networks (<b>ICANN</b>)</i>, 2022. (<b>CCF-C</b>)<br>
+                [<a href="./Files/chx_mml.pdf" target="_blank">Paper</a>] [<a href="https://github.com/chenhaoxing/M2L" target="_blank">Code</a>] [<a href="https://dblp.org/rec/conf/icann/ChenLLC22.html?view=bibtex" target="_blank">BibTex</a>]
+              </p>
+            </div>
+          </div>
+        </article>
+        <article class="columns">
+          <div class="column is-3">
+            <figure class="image">
+              <img src="./Files/mata.jpg" alt="WSFG" width="220px" height="110px" style="box-shadow: 4px 4px 8px #888;">
+            </figure>
+          </div>
+          <div class="column">
+            <div class="content">
+              <p>
+                <b>Haoxing Chen</b>, Huaxiong Li, Yaohui Li, Chunlin Chen.<br>
+                <a href="https://ieeexplore.ieee.org/document/9955637">Multi-scale Adaptive Task Attention Network for Few-Shot Learning.</a><br>
+                In: <i>International Conference on Pattern Recognition (<b>ICPR</b>)</i>, 2022. (<b>CCF-C</b>)<br>
+                [<a href="./Files/chx-mata.pdf" target="_blank">Paper</a>] [<a href=" https://github.com/chenhaoxing/MATANet" target="_blank">Code</a>] [<a href="https://dblp.org/rec/conf/icpr/ChenLLC22.html?view=bibtex" target="_blank">BibTex</a>]
+              </p>
+            </div>
+          </div>
+        </article>
+        <article class="columns">
+          <div class="column is-3">
+            <figure class="image">
+              <img src="./Files/mm.png" alt="WSFG" width="220px" height="110px" style="box-shadow: 4px 4px 8px #888;">
+            </figure>
+          </div>
+          <div class="column">
+            <div class="content">
+              <p>
+                Yaohui Li, Huaxiong Li, <b>Haoxing Chen</b>, Chunlin Chen.<br>
+                <a href="https://link.springer.com/chapter/10.1007%2F978-3-030-88004-0_36">Local Mutual Metric Network for Few-Shot Image Classification.</a><br>
+                In: <i>Chinese Conference on Pattern Recognition and Computer Vision (<b>PRCV</b>)</i>, 2021. (<b>CCF-C</b>)<br>
+                [<a href="./Files/LMMN.pdf" target="_blank">Paper</a>] [<a href="https://dblp.org/rec/conf/prcv/LiLCC21.html?view=bibtex" target="_blank">BibTex</a>]
+              </p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
 
-       <ol>
-	<table class="imgtable">
-                <tbody>
-                    <tr>
-                        <td>
-                            <img src="./Files/srin.jpg" alt="WSFG" width="220px" height="110px"  style="box-shadow: 4px 4px 8px #888">
-                            &nbsp;
-                        </td>
-                        <td align="left">
-                            <ul>
-                                <li>
-                                    <p>
-                                        <b>Haoxing Chen</b>, Yaohui Li,
-                                        , Zhangxuan Gu,  Zhuoer Xu, Jun Lan, Huaxiong Li.
-					    <br>
-                                        <a href="https://arxiv.org/abs/2312.12729">Segment Anything Model Meets Image Harmonization.
-					</a>
-                                        <br>
-                                        In: <em>IEEE International Conference on Acoustics, Speech and Signal Processing(<b>ICASSP</b>)</em>
-                                        , 2024. (<b>CCF-B</b>)
-                                        <br>
-					 [<a href="./Files/SRIN_ICASSP24.pdf" target="_blank">Paper</a>]
-					 [<a href="https://dblp.org/rec/journals/corr/abs-2312-12729.html?view=bibtex" arget="_blank">BibTex</a>]
-                                        </p>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+  <script>
+    var $hashList = $('.menu-list a'), offsetList, maxScrollHeight;
 
+    $('#sidebar').on('click', 'a', function(){
+      activate($(this))
+    });
 
-	 <table class="imgtable">
-                <tbody>
-                    <tr>
-                        <td>
-                            <img src="./Files/arch.jpeg" alt="WSFG" width="220px" height="110px"  style="box-shadow: 4px 4px 8px #888">
-                            &nbsp;
-                        </td>
-                        <td align="left">
-                            <ul>
-                                <li>
-                                    <p>
-                                        Zhangxuan Gu, <b>Haoxing Chen</b>
-                                        , Zhuoer Xu, Jun Lan, Changhua Meng, Weiqiang Wang.
-                                        <br>
-                                        <a href="https://arxiv.org/abs/2212.02773">DiffusionInst: Diffusion Model for Instance Segmentation.</a>
-                                        <br>
-                                        In: <em>IEEE International Conference on Acoustics, Speech and Signal Processing(<b>ICASSP</b>)</em>
-                                        , 2024. (<b>CCF-B</b>)
-                                        <br>
-                                        [<a href="./Files/Diffusioninst.pdf" target="_blank">Paper</a>]
-                                        [<a href="https://github.com/chenhaoxing/DiffusionInst" target="_blank">Code</a>]
-				        [<a href="https://github.com/ant-research/diffusion-model-for-instance-segmentation" target="_blank">Code(Ant-Research)</a>]
-					[<a href="https://dblp.org/rec/journals/corr/abs-2212-02773.html?view=bibtex" arget="_blank">BibTex</a>]    
-					<a href="https://github.com/chenhaoxing/DiffusionInst" target="_blank"><strong><font color=#e74d3c>200+ GitHub Stars</font></strong></a>
-                                    </p>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>    
+    $(window).on('resize', debounce(calculateBoundary, 300));
 
-	       
-		<table class="imgtable">
-                <tbody>
-                    <tr>
-                        <td>
-                            <img src="./Files/DiffUTE.jpg" alt="WSFG" width="220px" height="110px" style="box-shadow: 4px 4px 8px #888">
-                            &nbsp;
-                        </td>
-                        <td align="left">
-                            <ul>
-                                <li>
-                                    <p>
-                                        <b>Haoxing Chen</b>, Zhuoer Xu, Zhangxuan Gu, Jun Lan, Xing Zheng, Yaohui Li, Changhua Meng, Huijia Zhu, Weiqiang Wang.
-                                        <br>
-                                        <a href="https://arxiv.org/abs/2305.10825">DiffUTE: Universal Text Editing Diffusion Model.</a>
-                                        <br>
-                                        In: <em>Thirty-seventh Conference on Neural Information Processing Systems (<b>NeurIPS</b>)</em>
-                                        , 2023. (<b>CCF-A</b>)
-					<br>
-                                        [<a href="./Files/DiffUTE.pdf" target="_blank">Paper</a>]
-                                        [<a href=" https://github.com/chenhaoxing/DiffUTE" target="_blank">Code</a>]
-					[<a href=" https://www.bilibili.com/video/BV1wT4y1h7c7/" target="_blank">Video</a>]
-                                    </p>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>    
+    $(document).on('scroll', debounce(judgeScroll, 300));
 
-	       
- <table class="imgtable">
-                <tbody>
-                    <tr>
-                        <td>
-                            <img src="./Files/hd.jpg" alt="WSFG" width="220px" height="110px" style="box-shadow: 4px 4px 8px #888">
-                            &nbsp;
-                        </td>
-                        <td align="left">
-                            <ul>
-                                <li>
-                                    <p>
-                                        <b>Haoxing Chen</b>
-                                        , Zhangxuan Gu, Yaohui Li, Jun Lan, Changhua Meng, Weiqiang Wang, Huaxiong Li.
-                                        <br>
-                                        <a href="https://arxiv.org/abs/2211.08639">Hierarchical Dynamic Image Harmonization.</a>
-                                        <br>
-                                        In: <em>ACM Multimedia (<b>ACM MM</b>)</em>
-                                        , 2023.[<b>Oral</b>] (<b>CCF-A</b>)
-					    <br>
-                                        [<a href="./Files/HDNet.pdf" target="_blank">Paper</a>]
-                                        [<a href=" https://github.com/chenhaoxing/HDNet" target="_blank">Code</a>]
-					[<a href="hhttps://dblp.org/rec/journals/corr/abs-2211-08639.html?view=bibtex" arget="_blank">BibTex</a>]
-                                    </p>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>    
+    calculateBoundary();
+    judgeScroll();
+    
+    function  calculateBoundary() {
+      offsetList = $hashList.map(function(idx, ele){
+        return $(ele.hash).offset().top
+      });
+      maxScrollHeight = $(document).height() - $(window).height()
+    }
 
+    function judgeScroll() {
+      var tps = $("html").scrollTop()
+              ? $("html").scrollTop()
+              : $("body").scrollTop(),
+              len = offsetList.length;
+      if(tps >= maxScrollHeight-10){
+        activate($hashList.eq(len-1));
+        return
+      }
+      for(var i=0; i<len; i++){
+       if(tps+50<offsetList[i]){
+          activate($hashList.eq(Math.max(0,i-1)));
+          return
+        }
+      }
+    }
 
+    function activate(ele){
+      $hashList.removeClass('is-active');
+      ele.addClass('is-active');
+    }
 
-	       <table class="imgtable">
-                <tbody>
-                    <tr>
-                        <td>
-                            <img src="./Files/macl.jpg" alt="WSFG" width="220px" height="110px" style="box-shadow: 4px 4px 8px #888">
-                            &nbsp;
-                        </td>
-                        <td align="left">
-                            <ul>
-                                <li>
-                                    <p>
-                                        Zizheng Huang<sup>#</sup>, <b>Haoxing Chen <sup>#</sup>* </b>
-                                        , Ziqi Wen, Chao Zhang, Huaxiong Li, Bo Wang, Chunlin Chen. 
-                                        <br>
-                                        <a href="https://arxiv.org/abs/2207.07874">Model-Aware Contrastive Learning: Towards Escaping the Dilemmas.</a>
-                                        <br>
-                                        In: <em>International Conference on Machine Learning(<b>ICML</b>)</em>, 2023.(<b>CCF-A</b>)[# Equal contribution, * Corresponding author]
-					    <br>
-                                        [<a href="./Files/macl.pdf" target="_blank">Paper</a>]
-                                        [<a href="https://github.com/chenhaoxing/MACL_ICML2023" target="_blank">Code</a>]
-                                    </p>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                </tbody>
-            </table> 
-	       
-	       
-<table class="imgtable">
-                <tbody>
-                    <tr>
-                        <td>
-				<img src="./Files/apt2023.jpg" alt="sym" width="220px" height="110px" style="box-shadow: 4px 4px 8px #888" >
-                            &nbsp;
-                        </td>
-                        <td align="left">
-                            <ul>
-                                <li>
-					
-                                    <p>
-                                        Zhangxuan Gu, Zhuoer Xu, <b>Haoxing Chen</b>
-                                        , Jun Lan, Changhua Meng, Weiqiang Wang.
-                                        <br>
-					    <a href="https://openaccess.thecvf.com/content/CVPR2023/papers/Gu_Mobile_User_Interface_Element_Detection_via_Adaptively_Prompt_Tuning_CVPR_2023_paper.pdf">Mobile User Interface Element Detection Via Adaptively Prompt Tuning.</a>
-                                        <br>
-                                         In: <em>IEEE Conference on Computer Vision and Pattern Recognition(<b>CVPR</b>)</em>, 2023.(<b>CCF-A</b>)
-                                        <br>
-					[<a href="./Files/CVPR23.pdf" target="_blank">Paper</a>]
-					[<a href="https://github.com/antmachineintelligence/MUI-zh" target="_blank">Code</a>]
-					[<a href="https://dblp.org/rec/conf/cvpr/GuXCLMW23.html?view=bibtex" arget="_blank">BibTex</a>]
-                                    </p>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                </tbody>
-            </table> 
-
-	       	<table class="imgtable">
-                <tbody>
-                    <tr>
-                        <td>
-                            <img src="./Files/ss.png" alt="WSFG" width="220px" height="110px" style="box-shadow: 4px 4px 8px #888">
-                            &nbsp;
-                        </td>
-                        <td align="left">
-                            <ul>
-                                <li>
-                                    <p>
-                                        <b>Haoxing Chen</b>
-                                        , Huaxiong Li, Yaohui Li, Chunlin Chen.
-                                        <br>
-                                        <a href="http://engine.scichina.com/doi/10.1007/s11432-022-3700-8">Sparse Spatial Transformers for Few-Shot Learning.</a>
-                                        <br>
-                                        <em>Sci. China Inf. Sci.</em>
-                                        , 2023, 66(11): 210102. (<b>CCF-A, SCI/SCIE, Impact Factor: 8.8</b>)
-                                        <br>
-                                        [<a href="./Files/chx-ssformers.pdf" target="_blank">Paper</a>]
-                                        [<a href=" https://github.com/chenhaoxing/ssformers" target="_blank">Code</a>]
-					[<a href="https://dblp.org/rec/journals/corr/abs-2109-12932.html?view=bibtex" arget="_blank">BibTex</a>]
-                                    </p>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-	       
-	       
-        <table class="imgtable">
-                <tbody>
-                    <tr>
-                        <td>
-				<img src="./Files/mm_tapp.png" alt="sym" width="220px" height="110px" style="box-shadow: 4px 4px 8px #888">
-                            &nbsp;
-                        </td>
-                        <td align="left">
-                            <ul>
-                                <li>
-					
-                                    <p>
-                                        Yaohui Li, Yuzhe Yang, Huaxiong Li,<b>Haoxing Chen</b>, Liwu Xu, Leida Li, Yaqian Li, Yandong Guo.
-                                        <br>
-                                        <a href="https://dl.acm.org/doi/10.1145/3503161.3548244">Transductive Aesthetic Preference Propagation for Personalized Image Aesthetics Assessment.</a>
-                                        <br>
-                                         In: <em>ACM Multimedia(<b>ACM MM</b>)</em>, 2022.(<b>CCF-A</b>)
-                                        <br>
-                                        [<a href="./Files/TAPP-PIAA.pdf" target="_blank">Paper</a>]
-					[<a href="https://dblp.org/rec/conf/mm/LiYLCXLLG22.html?view=bibtex" arget="_blank">BibTex</a>]
-                                    </p>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                </tbody>
-            </table> 
-           
-           
-
-	    <h2 id="-Pub">Other Conference/Journal Publications</h2>
-	     <table class="imgtable">
-                <tbody>
-                    <tr>
-                        <td>
-                            <img src="./Files/asl.png" alt="WSFG" width="220px" height="110px" style="box-shadow: 4px 4px 8px #888">
-                            &nbsp;
-                        </td>
-                        <td align="left">
-                            <ul>
-                                <li>
-                                    <p>
-                                        <b>Haoxing Chen</b>
-                                        , Huaxiong Li, Yaohui Li, Chunlin Chen.
-                                        <br>
-                                        <a href="https://ieeexplore.ieee.org/document/9790054">Shaping Visual Representations with Attributes for Few-Shot Recognition. 
-					</a>
-                                        <br>
-                                        <em>IEEE Signal Process. Lett.</em>, 2022, 29: 1397-1401.(<b>CAA-B, SCI/SCIE, Impact Factor: 3.9</b>)
-                                        <br>
-                                         [<a href="./Files/asl.pdf" target="_blank">Paper</a>]
-                                        [<a href="https://github.com/chenhaoxing/ASL" target="_blank">Code</a>]
-					[<a href="https://dblp.org/rec/journals/spl/ChenLLC22.html?view=bibtex" arget="_blank" >BibTex</a>]
-                                    </p>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                </tbody>
-            </table> 
-<table class="imgtable">
-                <tbody>
-                    <tr>
-                        <td>
-                            <img src="./Files/mml.png" alt="WSFG" width="220px" height="110px" style="box-shadow: 4px 4px 8px #888">
-                            &nbsp;
-                        </td>
-                        <td align="left">
-                            <ul>
-                                <li>
-                                    <p>
-                                        <b>Haoxing Chen</b>
-                                        , Huaxiong Li, Yaohui Li, Chunlin Chen.
-                                        <br>
-                                        <a href="https://link.springer.com/chapter/10.1007/978-3-031-15919-0_21">Multi-level Metric Learning for Few-shot Image Recognition.</a>
-                                        <br>
-                                        In: <em>International Conference on Artificial Neural Networks(<b>ICANN</b>)</em>, 2022.(<b>CCF-C</b>)
-                                        <br>
-                                         [<a href="./Files/chx_mml.pdf" target="_blank">Paper</a>][<a href="https://github.com/chenhaoxing/M2L" target="_blank">Code</a>]
-                                    	[<a href="https://dblp.org/rec/conf/icann/ChenLLC22.html?view=bibtex" arget="_blank" >BibTex</a>]
-					</p>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-           
-       <table class="imgtable">
-                <tbody>
-                    <tr>
-                        <td>
-                            <img src="./Files/mata.jpg" alt="WSFG" width="220px" height="110px" style="box-shadow: 4px 4px 8px #888">
-                            &nbsp;
-                        </td>
-                        <td align="left">
-                            <ul>
-                                <li>
-                                    <p>
-                                        <b>Haoxing Chen</b>
-                                        , Huaxiong Li, Yaohui Li, Chunlin Chen.
-                                        <br>
-                                        <a href="https://ieeexplore.ieee.org/document/9955637">Multi-scale Adaptive Task Attention Network for Few-Shot Learning.</a>
-                                        <br>
-                                        In: <em>International Conference on Pattern Recognition(<b>ICPR</b>)</em>, 2022.(<b>CCF-C</b>)
-                                        <br>
-                                         [<a href="./Files/chx-mata.pdf" target="_blank">Paper</a>]
-                                         [<a href=" https://github.com/chenhaoxing/MATANet" target="_blank">Code</a>]
-					 [<a href="https://dblp.org/rec/conf/icpr/ChenLLC22.html?view=bibtex" arget="_blank" >BibTex</a>]
-                                    </p>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-	     <table class="imgtable">
-                <tbody>
-                    <tr>
-                        <td>
-                            <img src="./Files/mm.png" alt="WSFG" width="220px" height="110px" style="box-shadow: 4px 4px 8px #888">
-                            &nbsp;
-                        </td>
-                        <td align="left">
-                            <ul>
-                                <li>
-                                    <p>
-                                        Yaohui Li
-                                        , Huaxiong Li, <b>Haoxing Chen</b>, Chunlin Chen.
-                                        <br>
-                                        <a href="https://link.springer.com/chapter/10.1007%2F978-3-030-88004-0_36">Local Mutual Metric Network for Few-Shot Image Classification.</a>
-                                        <br>
-                                            In: <em>Chinese Conference on Pattern Recognition and Computer Vision(<b>PRCV</b>)</em>
-                                        , 2021. (<b>CCF-C</b>)
-                                        <br>
-                                          [<a href="./Files/LMMN.pdf" target="_blank">Paper</a>]
-					  [<a href="https://dblp.org/rec/conf/prcv/LiLCC21.html?view=bibtex" arget="_blank" >BibTex</a>]
-                                    </p>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-	       
-        </ol>
-
-     <br />
-
+    function debounce(fn, delay) {
+      var timeout = null;
+      return function () {
+        var args = arguments;
+        var context = this;
+        if (!timeout) {
+          timeout = setTimeout(function () {
+            timeout = 0;
+            return fn.apply(context, args);
+          }, delay);
+        }
+      };
+    }
+  </script>
 </body>
+
 </html>
