@@ -41,6 +41,16 @@
       width: 75%;
     }
 
+    .image {
+      display: flex;
+      align-items: center;
+    }
+
+    .image img {
+      width: 100%;
+      height: auto;
+    }
+
     @media screen and (min-width: 769px),
     print {
       .column.is-2_5,
@@ -53,14 +63,13 @@
   <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
 </head>
 
-
 <body>
   <section class="section">
     <div class="container">
       <div class="columns">
         <div class="column is-2_5">
           <div class="sticky">
-            <figure class="image" style="width: 11.6rem; margin-top: 6px;">
+            <figure class="image" style="width: 100%; margin-top: 6px;">
               <img src="./Files/chx.jpg">
             </figure>
             <div class="content">
@@ -103,14 +112,10 @@
               <a href='https://clustrmaps.com/site/1btwj'  title='Visit tracker'><img src='//clustrmaps.com/map_v2.png?cl=0e1633&w=215&t=n&d=rkwHBNu6OPD-EO4kLIais5o8CabldLxZqHttbAATTG8&co=ffffff&ct=8b8787'/></a> <!--d9edfb-->
             </div>
           </div>
-
-
-
         </div>
+
         <div class="column right-panel">
           <div class="content">
-
-
             <!--About Me-->
             <h2 id="intro">About Me</h2>
             <p>
@@ -144,8 +149,6 @@
             </article>
 
 
-  
-
             <!--Publications-->
             <h2 id="publications">
               Publications
@@ -160,11 +163,10 @@
             </h2>
 
             <!--List of publications--> 
-             
             <article class="columns">
               <div class="column is-3">
                 <figure class="image">
-                  <img src="./Files/DiffUTE.jpg" alt="WSFG" width="240px" height="200px" style="box-shadow: 4px 4px 8px #888">
+                  <img src="./Files/DiffUTE.jpg" alt="WSFG" style="width: 100%; height: auto; box-shadow: 4px 4px 8px #888">
                 </figure>
               </div>
               <div class="column">
@@ -175,19 +177,18 @@
                     <i>Thirty-seventh Conference on Neural Information Processing Systems (<b>NeurIPS</b>), 2023. (<b>CCF-A</b>)</i> <br>
                     [<a href="./Files/DiffUTE.pdf" target="_blank">Paper</a>]
                     [<a href=" https://github.com/chenhaoxing/DiffUTE" target="_blank">Code</a>]
-		    [<a href=" https://www.bilibili.com/video/BV1wT4y1h7c7/" target="_blank">Video</a>]
+                    [<a href=" https://www.bilibili.com/video/BV1wT4y1h7c7/" target="_blank">Video</a>]
                   </p>
                 </div>
               </div>
             </article>
 
-            
             <!--Awards-->
             <h2 id="awards">Awards</h2>
             <ul>
                 <li>2023, 2nd place (2/717) in the tamper-proof financial documents track in the <a href="https://tianchi.aliyun.com/competition/entrance/532096/information">AFAC Financial Data Verification Competition</a>.</li>
                 <li>2023, Nanjing University (NJU) Outstanding Graduates.</li>
-                <li>2023, 3rd place (3/1267) in the classification track and 6th place (6/1156) in the detection track in the <a href="https://tianchi.aliyun.com/competition/entrance/532048/introduction?spm=5176.12281976.0.0.4562331137uPvV">ICDAR Detecting Tampered Text in Images Competition</a>.</li>	
+                <li>2023, 3rd place (3/1267) in the classification track and 6th place (6/1156) in the detection track in the <a href="https://tianchi.aliyun.com/competition/entrance/532048/introduction?spm=5176.12281976.0.0.4562331137uPvV">ICDAR Detecting Tampered Text in Images Competition</a>.</li>  
                 <li>2022, Chinese National Scholarship.</li>
                 <li>2019, Meritorious Prize in the Mathematical Contest In Modeling (MCM).</li>
                 <li>2018, First Prize of Jiangsu Province in the National Mathematical Modelling Competition.</li>
@@ -203,17 +204,15 @@
         </div>
       </div>
     </div>
-    
 </section>
 
   <script>
-
     var $hashList = $('.menu-list a'), offsetList, maxScrollHeight;
 
     $('#sidebar').on('click', 'a', function(){
       activate($(this))
     });
-    
+
     $(window).on('resize', debounce(calculateBoundary, 300));
 
     $(document).on('scroll', debounce(judgeScroll, 300));
@@ -227,7 +226,7 @@
       });
       maxScrollHeight = $(document).height() - $(window).height()
     }
-    
+
     function judgeScroll() {
       var tps = $("html").scrollTop()
               ? $("html").scrollTop()
@@ -263,12 +262,7 @@
         }
       };
     }
-
-
-
   </script>
-
-
 </body>
 
 </html>
