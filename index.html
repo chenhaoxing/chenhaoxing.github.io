@@ -42,6 +42,89 @@
       display: flex;
       align-items: center;
     }
+
+	  .button {
+    font-family: Georgia, serif;
+    background-color: #D6EAF8;
+    border: none;
+    color: #022b6d;
+    padding: 6px 12px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.95em;
+    margin: 2px 3px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: #AED6F1;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .button3 {
+    background-color: #F1948A;
+    color: white;
+  }
+  
+  .button3:hover {
+    background-color: #E74C3C;
+  }
+  
+  .button4 {
+    background-color: #D6EAF8;
+    font-size: 0.85em;
+  }
+  
+  .button4:hover {
+    background-color: #AED6F1;
+  }
+  
+  .button5 {
+    background-color: #5DADE2;
+    color: white;
+  }
+  
+  .button5:hover {
+    background-color: #3498DB;
+  }
+  /* Further compact buttons */
+  .button {
+    padding: 4px 8px;
+    margin: 0 2px;
+    line-height: 1.2;
+  }
+  
+  /* Tighten buttons row */
+  #publications ol li button, #preprints ol li button {
+    margin-top: 2px;
+  }
+  /* Buttons should be on same line with minimal spacing */
+  button.button {
+    margin: 2px 2px;
+    padding: 3px 7px;
+    font-size: 0.9em;
+  }
+  /* Fix spacing before buttons */
+  #publications ol li button.button, #preprints ol li button.button {
+    margin-top: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  /* Conference rate button very compact */
+  button.button.button3 {
+    padding: 3px 6px;
+    margin-left: 5px;
+  }
+  
+  /* Ensure buttons align properly */
+  #publications ol li .button4, #preprints ol li .button4 {
+    display: inline-block;
+    margin: 1px 1px;
+  }
+	  
+
 	  
     @media screen and (min-width: 769px),
     print {
@@ -253,7 +336,7 @@
                     <b>Stochastic Layer-Wise Shuffle: A Good Practice to Improve Vision Mamba Training</b><br>
                     Zizheng Huang, <b>Haoxing Chen</b>,Jiaqi Li, Jun Lan, Huijia Zhu, Weiqiang Wang, Limin Wang.<br>
                     In: <i>International Conference on Machine Learning (<b>ICML</b>)</i>, 2025. (<b>CCF-A</b>) <br>
-		[<a href="https://arxiv.org/pdf/2408.17081.pdf" target="_blank">Paper</a>]  [<a href="https://github.com/huangzizheng01/ShuffleMamba" target="_blank">Code</a>]
+		<button class="button button4"><a href="https://arxiv.org/pdf/2408.17081.pdf" target="_blank">Paper</a></button>  <button class="button button4"><a href="https://github.com/huangzizheng01/ShuffleMamba" target="_blank">Code</a></button>
                   </p>
                 </div>
               </div>
