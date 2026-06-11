@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <script defer src="font-awesome/js/brands.min.js"></script>
   <script defer src="font-awesome/js/regular.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/solid.min.js"></script>
   <script defer src="font-awesome/js/fontawesome.min.js"></script>
   <style>
     :root {
@@ -18,6 +19,8 @@
       --primary-dark: #a0aab8;
       --primary-glow: rgba(192,200,212,0.15);
       --accent: #e4e8ee;
+      --gold: #d4b478;
+      --gold-glow: rgba(212,180,120,0.18);
       --bg: #09090b;
       --bg-elevated: #0e0e11;
       --bg-card: #141418;
@@ -54,6 +57,14 @@
     }
     a { color: var(--primary); text-decoration: none; transition: color var(--transition); }
     a:hover { color: var(--accent); }
+
+    /* Scroll progress bar */
+    .scroll-progress {
+      position: fixed; top: 0; left: 0; height: 2.5px; width: 0%;
+      background: linear-gradient(90deg, #f5f5f7, var(--primary) 45%, #d4b478 100%);
+      box-shadow: 0 0 12px rgba(192,200,212,0.4);
+      z-index: 1000; transition: width 0.1s linear;
+    }
 
     .page-wrapper { max-width: 1240px; margin: 0 auto; padding: 48px 28px; display: flex; gap: 48px; }
 
@@ -96,6 +107,17 @@
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
     .profile-affiliation { font-size: 0.9em; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px; }
+    .profile-stats { display: flex; justify-content: center; gap: 8px; margin-bottom: 4px; flex-wrap: wrap; }
+    .stat-chip {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 5px 12px; border-radius: 20px;
+      background: rgba(192,200,212,0.05);
+      border: 1px solid var(--border);
+      font-size: 0.74em; font-weight: 500; color: var(--text-secondary);
+      transition: all var(--transition);
+    }
+    .stat-chip:hover { border-color: var(--gold); color: var(--gold); box-shadow: 0 0 16px var(--gold-glow); }
+    .stat-chip b { color: var(--text); font-weight: 700; }
     .profile-quote {
       font-style: italic; font-size: 0.82em; color: var(--text-muted);
       padding: 14px 18px;
@@ -117,7 +139,7 @@
       background: linear-gradient(135deg, var(--primary), var(--accent));
       color: #09090b;
       transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(192,200,212,0.15);
+      box-shadow: 0 6px 20px rgba(192,200,212,0.15), 0 0 24px var(--gold-glow);
       border-color: transparent;
     }
 
@@ -168,7 +190,7 @@
     .section-title::after {
       content: ''; position: absolute; bottom: 0; left: 0;
       width: 50px; height: 2px; border-radius: 2px;
-      background: linear-gradient(90deg, #f5f5f7, #c0c8d4 50%, transparent);
+      background: linear-gradient(90deg, #f5f5f7, var(--primary) 50%, var(--gold) 90%, transparent);
       transition: width var(--transition);
     }
     .section-title:hover::after { width: 100%; }
@@ -213,7 +235,7 @@
     }
     .research-card::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+      background: linear-gradient(90deg, var(--primary), var(--gold), var(--accent), var(--primary));
       opacity: 0; transition: opacity var(--transition);
     }
     .research-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); border-color: var(--border-hover); }
@@ -354,7 +376,7 @@
       opacity: 0; pointer-events: none; border: none;
     }
     .back-to-top.visible { opacity: 1; pointer-events: auto; }
-    .back-to-top:hover { transform: translateY(-4px) scale(1.05); box-shadow: 0 8px 28px rgba(192,200,212,0.25); }
+    .back-to-top:hover { transform: translateY(-4px) scale(1.05); box-shadow: 0 8px 28px rgba(192,200,212,0.25), 0 0 22px var(--gold-glow); }
 
     /* Scrollbar */
     ::-webkit-scrollbar { width: 8px; }
@@ -385,6 +407,7 @@
 </head>
 
 <body>
+  <div class="scroll-progress" id="scrollProgress"></div>
   <div class="page-wrapper">
     <aside class="sidebar">
       <div class="sidebar-inner">
@@ -394,6 +417,10 @@
           </div>
           <h1 class="profile-name">Haoxing Chen</h1>
           <p class="profile-affiliation">AGI Center, Ant Research Institute<br>Hangzhou, China</p>
+          <div class="profile-stats">
+            <span class="stat-chip"><span class="fas fa-cube"></span> Foundation Models</span>
+            <span class="stat-chip"><span class="fas fa-layer-group"></span> Multimodal LLMs</span>
+          </div>
           <div class="social-links">
             <a href="https://github.com/chenhaoxing" target="_blank" title="GitHub"><span class="fab fa-github fa-lg"></span></a>
             <a href="https://scholar.google.co.uk/citations?user=BnS7HzAAAAAJ&hl=en" target="_blank" title="Google Scholar"><span class="fab fa-google fa-lg"></span></a>
@@ -483,7 +510,7 @@
         <div class="pub-item"><div class="pub-thumbnail"><img src="./Files/MultiEdit.jpg" alt="MultiEdit"></div><div class="pub-info"><div class="pub-title">MultiEdit: Advancing Instruction-based Image Editing on Diverse and Challenging Tasks</div><div class="pub-authors">Mingsong Li, Lin Liu, Hongjun Wang, <b>Haoxing Chen</b>, et al.</div><div class="pub-venue"><span class="pub-venue-text">arXiv 2509.14638, 2025.</span></div><div class="pub-links"><a href="https://arxiv.org/pdf/2509.14638.pdf" class="pub-btn" target="_blank">Paper</a><a href="https://huggingface.co/datasets/inclusionAI/MultiEdit" class="pub-btn" target="_blank">Datasets</a></div></div></div>
         <div class="pub-item"><div class="pub-thumbnail"><img src="./Files/Lumina-dimoo.jpg" alt="Lumina-DiMOO"></div><div class="pub-info"><div class="pub-title">Lumina-DiMOO: An Omni Diffusion Large Language Model for Multi-Modal Generation and Understanding</div><div class="pub-authors">Yi Xin, Qi Qin, ... <b>Haoxing Chen</b>, ... et al.</div><div class="pub-venue"><span class="pub-venue-text">arXiv 2510.06308, 2025.</span></div><div class="pub-links"><a href="https://arxiv.org/pdf/2510.06308.pdf" class="pub-btn" target="_blank">Paper</a><a href="https://huggingface.co/Alpha-VLLM/Lumina-DiMOO" class="pub-btn" target="_blank">Models</a><a href="https://github.com/Alpha-VLLM/Lumina-DiMOO" class="pub-btn" target="_blank">Code</a></div></div></div>
         <h3 class="pub-category-title">Top Conference / Journal Publications</h3>
-	<div class="pub-item"><div class="pub-thumbnail"><img src="./Files/PEFT_IJCV.jpg" alt="demamba"></div><div class="pub-info"><div class="pub-title">Parameter-Efficient Fine-Tuning for Pre-Trained Vision Models: A Survey and Benchmark</div><div class="pub-authors">Yi Xin, Jianjiang Yang, Siqi Luo, ... <b>Haoxing Chen</b>, et al.</div><div class="pub-venue"><span class="pub-venue-text">International Journal of Computer Vision 2026</span> <span class="ccf-tag ccf-a">CCF-A</span> <span class="if-tag">IF: 9.7</span></div><div class="pub-links"><a href="https://arxiv.org/pdf/2402.02242" class="pub-btn" target="_blank">Paper</a><a href="ttps://github.com/synbol/Awesome-Parameter-Efficient-Transfer-Learning," class="pub-btn" target="_blank">Code</a><a href="https://github.com/synbol/Parameter-Efficient-Transfer-Learning-Benchmark," class="pub-btn" target="_blank">Benchmark</a></div></div></div>
+	<div class="pub-item"><div class="pub-thumbnail"><img src="./Files/PEFT_IJCV.jpg" alt="demamba"></div><div class="pub-info"><div class="pub-title">Parameter-Efficient Fine-Tuning for Pre-Trained Vision Models: A Survey and Benchmark</div><div class="pub-authors">Yi Xin, Jianjiang Yang, Siqi Luo, ... <b>Haoxing Chen</b>, et al.</div><div class="pub-venue"><span class="pub-venue-text">International Journal of Computer Vision 2026</span> <span class="ccf-tag ccf-a">CCF-A</span> <span class="if-tag">IF: 9.7</span></div><div class="pub-links"><a href="https://arxiv.org/pdf/2402.02242" class="pub-btn" target="_blank">Paper</a><a href="https://github.com/synbol/Awesome-Parameter-Efficient-Transfer-Learning" class="pub-btn" target="_blank">Code</a><a href="https://github.com/synbol/Parameter-Efficient-Transfer-Learning-Benchmark" class="pub-btn" target="_blank">Benchmark</a></div></div></div>
 		<div class="pub-item"><div class="pub-thumbnail"><img src="./Files/VFOD.png" alt="demamba"></div><div class="pub-info"><div class="pub-title">DeMamba: AI-Generated Video Detection on Million-Scale GenVideo Benchmark</div><div class="pub-authors"><b>Haoxing Chen</b>, Yan Hong, Zizheng Huang, et al.</div><div class="pub-venue"><span class="pub-venue-text">Sci. China Inf. Sci. 2026</span> <span class="ccf-tag ccf-a">CCF-A</span> <span class="if-tag">IF: 7.6</span></div><div class="pub-links"><a href="http://engine.scichina.com/doi/10.1007/s11432-024-4894-0" class="pub-btn" target="_blank">Paper</a><a href="https://github.com/chenhaoxing/DeMamba" class="pub-btn" target="_blank">Code</a></div></div></div>
         <div class="pub-item"><div class="pub-thumbnail"><img src="./Files/dllmtts.jpg" alt="dMLLM-TTS"></div><div class="pub-info"><div class="pub-title">dMLLM-TTS: Self-Verified and Efficient Test-Time Scaling for Diffusion Multi-Modal Large Language Models</div><div class="pub-authors">Yi Xin, Siqi Luo, Qi Qin, <b>Haoxing Chen</b>, et al.</div><div class="pub-venue"><span class="pub-venue-text">CVPR 2026</span> <span class="ccf-tag ccf-a">CCF-A</span></div><div class="pub-links"><a href="https://arxiv.org/pdf/2512.19433.pdf" class="pub-btn" target="_blank">Paper</a></div></div></div>
         <div class="pub-item"><div class="pub-thumbnail"><img src="./Files/Dnd_iclr26.jpg" alt="DND"></div><div class="pub-info"><div class="pub-title">DND: Boosting Large Language Models with Dynamic Nested Depth</div><div class="pub-authors">Tieyuan Chen, Xiaodong Chen, <b>Haoxing Chen</b>, Zhenzhong Lan, Weiyao Lin, Jianguo Li.</div><div class="pub-venue"><span class="pub-venue-text">ICLR 2026</span></div><div class="pub-links"><a href="https://arxiv.org/pdf/2510.11001.pdf" class="pub-btn" target="_blank">Paper</a></div></div></div>
@@ -525,7 +552,7 @@
           <li>IEEE Trans on TIP/TCYB/TMM/TNNLS/TCSVT, Reviewer</li>
         </ul>
       </section>
-      <footer class="page-footer">&copy; 2025 Haoxing Chen. All rights reserved.</footer>
+      <footer class="page-footer">&copy; 2026 Haoxing Chen. All rights reserved. &middot; Built with care.</footer>
     </main>
   </div>
   <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
@@ -539,7 +566,12 @@
       navLinks.forEach(l => { l.classList.remove('is-active'); if (l.getAttribute('href') === '#' + cur) l.classList.add('is-active'); });
     }
     function updateBackToTop() { document.getElementById('backToTop').classList.toggle('visible', window.scrollY > 300); }
-    window.addEventListener('scroll', function() { updateNav(); updateBackToTop(); });
+    function updateProgress() {
+      const dh = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = dh > 0 ? (window.scrollY / dh) * 100 : 0;
+      document.getElementById('scrollProgress').style.width = pct + '%';
+    }
+    window.addEventListener('scroll', function() { updateNav(); updateBackToTop(); updateProgress(); });
     navLinks.forEach(link => { link.addEventListener('click', function(e) { e.preventDefault(); const t = document.querySelector(this.getAttribute('href')); if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }); });
     const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible-section'); }); }, { threshold: 0.08 });
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
