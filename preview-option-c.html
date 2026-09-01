@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Haoxing Chen's Homepage</title>
+  <title>Haoxing Chen's Homepage — Option C Preview</title>
   <link rel="shortcut icon" type="image/x-icon" href="./Files/mambaicon.png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <script defer src="font-awesome/js/brands.min.js"></script>
@@ -36,7 +36,7 @@
       --shadow-glow: 0 0 30px rgba(192,200,212,0.03);
       --radius: 18px;
       --radius-sm: 12px;
-      --transition: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      --transition: 0.45s cubic-bezier(0.16, 1, 0.3, 1);
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; scroll-padding-top: 20px; }
@@ -85,7 +85,7 @@
       width: 168px; height: 168px; margin: 0 auto 24px;
       border-radius: 50%; padding: 3px;
       background: conic-gradient(from 140deg, #f5f5f7 0deg, #e4e8ee 60deg, #c0c8d4 140deg, #6b7280 220deg, #c0c8d4 300deg, #f5f5f7 360deg);
-      box-shadow: 0 0 0 1px rgba(255,255,255,0.04), 0 8px 28px rgba(0,0,0,0.55), 0 0 80px rgba(192,200,212,0.05);
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.04), 0 8px 28px rgba(0,0,0,0.55), 0 0 36px rgba(212,180,120,0.10), 0 0 80px rgba(192,200,212,0.05);
       transition: transform var(--transition), box-shadow var(--transition);
     }
     .profile-photo-wrapper::before {
@@ -190,13 +190,10 @@
     .section-title::after {
       content: ''; position: absolute; bottom: 0; left: 0;
       width: 50px; height: 2px; border-radius: 2px;
-      background: linear-gradient(90deg, #f5f5f7, var(--primary) 70%, transparent);
-      transition: width var(--transition), background var(--transition);
+      background: linear-gradient(90deg, #f5f5f7, var(--primary) 50%, var(--gold) 90%, transparent);
+      transition: width var(--transition);
     }
-    .section-title:hover::after {
-      width: 100%;
-      background: linear-gradient(90deg, #f5f5f7, var(--primary) 55%, var(--gold) 88%, transparent);
-    }
+    .section-title:hover::after { width: 100%; }
     .section-title .title-links { display: inline; margin-left: 16px; vertical-align: middle; }
 
     .content-section { margin-bottom: 52px; }
@@ -241,17 +238,12 @@
       background: linear-gradient(90deg, var(--primary), var(--gold), var(--accent), var(--primary));
       opacity: 0; transition: opacity var(--transition);
     }
-    .research-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); border-color: var(--border-hover); }
+    .research-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); border-color: var(--border-hover); }
     .research-card:hover::before { opacity: 1; }
     .research-card h4 {
       font-size: 1.1em; margin-bottom: 12px;
-      color: var(--text);
-    }
-    .research-card h4::after {
-      content: ''; display: block;
-      width: 30px; height: 1px; margin-top: 10px;
-      background: linear-gradient(90deg, var(--gold), transparent);
-      opacity: 0.8;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
     .research-card p { font-size: 0.9em; color: var(--text-secondary); line-height: 1.7; margin: 0; }
 
@@ -270,7 +262,7 @@
       box-shadow: var(--shadow-sm);
       transition: all var(--transition);
     }
-    .timeline-item:hover { box-shadow: var(--shadow-md); transform: translateX(3px); border-color: var(--border-hover); }
+    .timeline-item:hover { box-shadow: var(--shadow-md); transform: translateX(6px); border-color: var(--border-hover); }
     .timeline-item::before {
       content: ''; position: absolute; left: -28px; top: 28px;
       width: 14px; height: 14px; border-radius: 50%;
@@ -300,7 +292,7 @@
       box-shadow: var(--shadow-sm);
       transition: all var(--transition);
     }
-    .pub-item:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); border-color: var(--border-hover); }
+    .pub-item:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); border-color: var(--border-hover); }
     .pub-thumbnail { width: 185px; flex-shrink: 0; }
     .pub-thumbnail img { width: 100%; border-radius: var(--radius-sm); box-shadow: var(--shadow-sm); }
     .pub-info { flex: 1; }
@@ -410,6 +402,55 @@
       .timeline { padding-left: 24px; }
       .timeline-item::before { left: -20px; width: 12px; height: 12px; }
       .exp-logo { width: 44px; height: 44px; }
+    }
+
+    /* Option C preview: ringless portrait + directional gold underlight. */
+    .profile-photo-wrapper {
+      padding: 0;
+      background: transparent;
+      isolation: isolate;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.58);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .profile-photo-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: auto 25% -5px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--gold);
+      filter: blur(18px);
+      opacity: 0.30;
+      pointer-events: none;
+      z-index: -1;
+      transition: opacity var(--transition), transform var(--transition);
+    }
+    .profile-photo-wrapper:hover {
+      transform: translateY(-2px) scale(1.035);
+      box-shadow: 0 16px 38px rgba(0,0,0,0.66);
+    }
+    .profile-photo-wrapper:hover::before {
+      opacity: 0.52;
+      transform: scaleX(1.12);
+    }
+    .profile-photo-wrapper img {
+      border: 0;
+      z-index: 1;
+    }
+
+    .stat-chip:hover {
+      border-color: rgba(212,180,120,0.48);
+      color: #dfc58e;
+      box-shadow: 0 12px 24px -16px rgba(212,180,120,0.72);
+    }
+    .social-links a:hover {
+      box-shadow: 0 10px 24px rgba(0,0,0,0.30), 0 14px 26px -18px rgba(212,180,120,0.78);
+    }
+    .pub-btn:hover {
+      box-shadow: 0 10px 22px rgba(0,0,0,0.28), 0 14px 24px -18px rgba(212,180,120,0.70);
+    }
+    .back-to-top:hover {
+      box-shadow: 0 10px 26px rgba(0,0,0,0.34), 0 16px 28px -18px rgba(212,180,120,0.76);
     }
   </style>
 </head>
@@ -561,7 +602,7 @@
           <li>IEEE Trans on TIP/TCYB/TMM/TNNLS/TCSVT, Reviewer</li>
         </ul>
       </section>
-      <footer class="page-footer">&copy; 2026 Haoxing Chen. All rights reserved.</footer>
+      <footer class="page-footer">&copy; 2026 Haoxing Chen. All rights reserved. &middot; Built with care.</footer>
     </main>
   </div>
   <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
