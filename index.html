@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="dark light">
+  <meta name="color-scheme" content="dark">
   <title>Haoxing Chen's Homepage</title>
   <link rel="shortcut icon" type="image/x-icon" href="./Files/mambaicon.png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -13,22 +13,6 @@
   <script defer src="font-awesome/js/regular.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/solid.min.js"></script>
   <script defer src="font-awesome/js/fontawesome.min.js"></script>
-  <script>
-    (function () {
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
-      const syncSystemTheme = function () {
-        document.documentElement.dataset.theme = systemTheme.matches ? 'dark' : 'light';
-      };
-      syncSystemTheme();
-      if (systemTheme.addEventListener) systemTheme.addEventListener('change', syncSystemTheme);
-      else systemTheme.addListener(syncSystemTheme);
-      window.addEventListener('pageshow', syncSystemTheme);
-      window.addEventListener('focus', syncSystemTheme);
-      document.addEventListener('visibilitychange', function () {
-        if (!document.hidden) syncSystemTheme();
-      });
-    })();
-  </script>
   <style>
     :root {
       color-scheme: dark;
@@ -52,6 +36,8 @@
       --shadow-md: 0 4px 20px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.03);
       --shadow-lg: 0 10px 40px rgba(0,0,0,0.7);
       --shadow-glow: 0 0 30px rgba(192,200,212,0.03);
+      --field-ink: 205,205,205;
+      --field-accent: 212,180,120;
       --radius: 18px;
       --radius-sm: 12px;
       --transition: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
@@ -82,6 +68,72 @@
       background: linear-gradient(90deg, #f5f5f7, var(--primary) 45%, #d4b478 100%);
       box-shadow: 0 0 12px rgba(192,200,212,0.4);
       z-index: 1000; transition: width 0.1s linear;
+    }
+
+    /* LLaDA-inspired coherence field, adapted to the personal homepage. */
+    .agi-hero {
+      position: relative;
+      display: flex;
+      align-items: center;
+      min-height: clamp(360px, 58vh, 560px);
+      margin-bottom: 30px;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+      isolation: isolate;
+    }
+    .coherence-field {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .agi-hero-copy {
+      position: relative;
+      z-index: 1;
+      width: min(52%, 470px);
+      pointer-events: none;
+    }
+    .agi-hero-kicker {
+      margin: 0 0 14px;
+      color: var(--primary);
+      font-size: 0.72em;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .agi-hero-title {
+      max-width: 9.5em;
+      margin: 0;
+      color: var(--text);
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5em, 4.5vw, 4.6em);
+      font-weight: 600;
+      line-height: 0.98;
+      letter-spacing: -0.035em;
+    }
+    .agi-hero-summary {
+      max-width: 34em;
+      margin: 22px 0 0;
+      color: var(--text-secondary);
+      font-size: 0.92em;
+      line-height: 1.7;
+    }
+    .coherence-readout {
+      position: absolute;
+      z-index: 1;
+      right: 0;
+      bottom: 14px;
+      left: 58%;
+      display: flex;
+      justify-content: space-between;
+      color: var(--text-muted);
+      font-size: 0.62em;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      pointer-events: none;
     }
 
     .page-wrapper { max-width: 1240px; margin: 0 auto; padding: 36px 28px; display: flex; gap: 48px; }
@@ -429,71 +481,6 @@
     .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.9s ease, transform 0.9s ease; }
     .fade-in.visible-section { opacity: 1; transform: translateY(0); }
 
-    /* Light palette; applied when the system-theme listener selects light mode. */
-    html[data-theme="light"] {
-      color-scheme: light;
-      --primary: #3f4752;
-      --primary-light: rgba(63,71,82,0.08);
-      --primary-dark: #2f353d;
-      --primary-glow: rgba(63,71,82,0.12);
-      --accent: #242a31;
-      --gold: #a66f3f;
-      --gold-glow: rgba(166,111,63,0.14);
-      --bg: #ffffff;
-      --bg-elevated: #fafbfc;
-      --bg-card: #ffffff;
-      --bg-card-hover: #f6f5f3;
-      --text: #20252b;
-      --text-secondary: #56616c;
-      --text-muted: #747d86;
-      --border: rgba(32,37,43,0.13);
-      --border-hover: rgba(63,71,82,0.30);
-      --shadow-sm: 0 1px 3px rgba(32,37,43,0.08), 0 8px 24px rgba(32,37,43,0.04);
-      --shadow-md: 0 12px 32px rgba(32,37,43,0.11);
-      --shadow-lg: 0 18px 48px rgba(32,37,43,0.13);
-      --shadow-glow: 0 0 30px rgba(63,71,82,0.035);
-    }
-    html[data-theme="light"] body { background-image: none; }
-    html[data-theme="light"] .profile-card,
-    html[data-theme="light"] .nav-section {
-      background: linear-gradient(165deg, #ffffff 0%, #fafbfc 100%);
-    }
-    html[data-theme="light"] .profile-name {
-      background: linear-gradient(135deg, #20252b, #52606c);
-      -webkit-background-clip: text;
-      background-clip: text;
-    }
-    html[data-theme="light"] .stat-chip,
-    html[data-theme="light"] .social-links a,
-    html[data-theme="light"] .pub-btn,
-    html[data-theme="light"] .profile-quote { background: rgba(63,71,82,0.065); }
-    html[data-theme="light"] .nav-list a:hover,
-    html[data-theme="light"] .nav-list a.is-active {
-      background: linear-gradient(135deg, rgba(63,71,82,0.13), rgba(63,71,82,0.06));
-    }
-    html[data-theme="light"] .hiring-banner {
-      background: linear-gradient(135deg, rgba(63,71,82,0.09), rgba(166,111,63,0.035));
-      border-color: rgba(63,71,82,0.20);
-    }
-    html[data-theme="light"] .section-title::after {
-      background: linear-gradient(90deg, var(--primary), rgba(63,71,82,0.38), transparent);
-    }
-    html[data-theme="light"] .section-title:hover::after {
-      background: linear-gradient(90deg, var(--primary), var(--gold) 82%, transparent);
-    }
-    html[data-theme="light"] .news-list li { background: rgba(63,71,82,0.035); }
-    html[data-theme="light"] .news-list li:hover { background: rgba(63,71,82,0.085); }
-    html[data-theme="light"] .timeline::before {
-      background: linear-gradient(180deg, var(--primary), rgba(63,71,82,0.13), var(--primary));
-    }
-    html[data-theme="light"] .social-links a:hover,
-    html[data-theme="light"] .pub-btn:hover { color: #ffffff; }
-    html[data-theme="light"] .back-to-top {
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      color: #ffffff;
-    }
-    html[data-theme="light"] ::-webkit-scrollbar-thumb { background: rgba(63,71,82,0.24); }
-
     /* Responsive */
     @media (max-width: 900px) {
       .page-wrapper { flex-direction: column; padding: 20px 16px; gap: 24px; }
@@ -508,6 +495,10 @@
       .timeline { padding-left: 24px; }
       .timeline-item::before { left: -20px; width: 12px; height: 12px; }
       .exp-logo { width: 44px; height: 44px; }
+      .agi-hero { min-height: 460px; align-items: flex-start; padding-top: 28px; }
+      .agi-hero-copy { width: 78%; }
+      .agi-hero-title { font-size: clamp(2.4em, 10vw, 4em); }
+      .coherence-readout { display: none; }
     }
   </style>
 </head>
@@ -549,6 +540,18 @@
       </div>
     </aside>
     <main class="main-content">
+      <section class="agi-hero" id="agiHero" aria-labelledby="agiHeroTitle">
+        <canvas class="coherence-field" id="coherenceField" aria-hidden="true"></canvas>
+        <div class="agi-hero-copy">
+          <p class="agi-hero-kicker">AGI / Multimodal Agents</p>
+          <h2 class="agi-hero-title" id="agiHeroTitle">From Multimodal Perception to General Intelligence.</h2>
+          <p class="agi-hero-summary">Exploring foundation models and long-horizon agents that turn multimodal understanding into purposeful action.</p>
+        </div>
+        <div class="coherence-readout" aria-hidden="true">
+          <span>Noise → Coherence</span>
+          <span>Perceive · Reason · Act</span>
+        </div>
+      </section>
       <div class="hiring-banner"><span class="hiring-dot"></span> We are seeking self-motivated PhD students or outstanding master students for research internships focused on Foundation Model Architecture. Feel free to contact us.</div>
       <section class="content-section fade-in" id="intro">
         <h2 class="section-title">About Me</h2>
@@ -684,6 +687,341 @@
     navLinks.forEach(link => { link.addEventListener('click', function(e) { e.preventDefault(); const t = document.querySelector(this.getAttribute('href')); if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }); });
     const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible-section'); }); }, { threshold: 0.08 });
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    const coherenceHero = document.getElementById('agiHero');
+    const coherenceCanvas = document.getElementById('coherenceField');
+    const coherenceContext = coherenceCanvas ? coherenceCanvas.getContext('2d', { alpha: true }) : null;
+    if (coherenceHero && coherenceCanvas && coherenceContext) {
+      const reduceCoherenceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const maskGlyphs = ['[··]', '[  ]', '░', '◇'];
+      const initialWords = ['SEE · HEAR', 'UNDERSTAND'];
+      const evolvedWords = ['SEE · HEAR', 'REASON · PLAN · ACT'];
+      let fieldWidth = 1;
+      let fieldHeight = 1;
+      let fieldParticles = [];
+      let fieldStars = [];
+      let animationFrame = 0;
+      let cycleStarted = performance.now();
+      let previousFrame = cycleStarted;
+      const fieldPointer = { x: 0, y: 0, active: false, energy: 0 };
+
+      const clamp01 = function (value) { return Math.max(0, Math.min(1, value)); };
+      const smoothstep = function (value) {
+        const n = clamp01(value);
+        return n * n * (3 - 2 * n);
+      };
+      const fieldGeometry = function () {
+        const mobile = fieldWidth < 700;
+        const side = mobile ? Math.min(fieldWidth * 0.7, 280) : Math.min(410, Math.max(290, fieldWidth * 0.36));
+        return {
+          centerX: fieldWidth * (mobile ? 0.73 : 0.76),
+          centerY: fieldHeight * (mobile ? 0.73 : 0.51),
+          side: side,
+          mobile: mobile
+        };
+      };
+      const semanticFontSizeFor = function (geometry) {
+        return Math.round(geometry.mobile ? geometry.side * 0.078 : geometry.side * 0.094);
+      };
+
+      function sampleWords(lines) {
+        const geometry = fieldGeometry();
+        const sampleWidth = Math.max(1, Math.round(geometry.side * 1.52));
+        const sampleHeight = Math.max(1, Math.round(geometry.side));
+        const sampleCanvas = document.createElement('canvas');
+        const sampleContext = sampleCanvas.getContext('2d', { willReadFrequently: true });
+        if (!sampleContext) return [];
+        sampleCanvas.width = sampleWidth;
+        sampleCanvas.height = sampleHeight;
+        const fontSize = semanticFontSizeFor(geometry);
+        const lineGap = fontSize * 1.8;
+        const points = [];
+        sampleContext.font = '600 ' + fontSize + 'px ui-monospace, SFMono-Regular, Menlo, monospace';
+        sampleContext.textAlign = 'center';
+        sampleContext.textBaseline = 'middle';
+        lines.forEach(function (line, row) {
+          sampleContext.clearRect(0, 0, sampleWidth, sampleHeight);
+          sampleContext.fillStyle = '#fff';
+          const y = sampleHeight / 2 + (row - (lines.length - 1) / 2) * lineGap;
+          sampleContext.fillText(line, sampleWidth / 2, y);
+          const pixels = sampleContext.getImageData(0, 0, sampleWidth, sampleHeight).data;
+          const linePoints = [];
+          const step = geometry.mobile ? 2 : 1;
+          for (let sampleY = 0; sampleY < sampleHeight; sampleY += step) {
+            for (let sampleX = 0; sampleX < sampleWidth; sampleX += step) {
+              if (pixels[(sampleY * sampleWidth + sampleX) * 4 + 3] > 90) {
+                linePoints.push({
+                  x: geometry.centerX - sampleWidth / 2 + sampleX,
+                  y: geometry.centerY - sampleHeight / 2 + sampleY
+                });
+              }
+            }
+          }
+          linePoints.forEach(function (point, groupIndex) {
+            points.push({
+              x: point.x,
+              y: point.y,
+              group: row,
+              groupIndex: groupIndex,
+              groupSize: linePoints.length
+            });
+          });
+        });
+        return points;
+      }
+
+      function rebuildCoherenceField() {
+        const bounds = coherenceHero.getBoundingClientRect();
+        const ratio = Math.min(window.devicePixelRatio || 1, 1.75);
+        fieldWidth = Math.max(1, bounds.width);
+        fieldHeight = Math.max(1, bounds.height);
+        coherenceCanvas.width = Math.round(fieldWidth * ratio);
+        coherenceCanvas.height = Math.round(fieldHeight * ratio);
+        coherenceContext.setTransform(ratio, 0, 0, ratio, 0, 0);
+        const targetsA = sampleWords(initialWords);
+        const targetsB = sampleWords(evolvedWords);
+        const targetsBByGroup = evolvedWords.map(function (_, group) {
+          return targetsB.filter(function (target) { return target.group === group; });
+        });
+        const count = Math.min(2800, Math.max(1500, Math.round((fieldWidth * fieldHeight) / 240)));
+        const targetCount = Math.min(count, targetsA.length);
+        const starCount = fieldWidth < 700
+          ? Math.min(84, Math.max(60, Math.round((fieldWidth * fieldHeight) / 5200)))
+          : Math.min(150, Math.max(100, Math.round((fieldWidth * fieldHeight) / 5200)));
+        fieldStars = Array.from({ length: starCount }, function (_, index) {
+          const depth = 0.35 + Math.random() * 0.65;
+          const major = index < 8;
+          const medium = !major && index < 24;
+          return {
+            x: fieldWidth * (0.02 + Math.random() * 0.96),
+            y: fieldHeight * (0.04 + Math.random() * 0.92),
+            size: major ? 1.35 + Math.random() * 0.55 : medium ? 0.85 + Math.random() * 0.42 : 0.38 + depth * 0.66,
+            alpha: major ? 0.76 + Math.random() * 0.18 : medium ? 0.45 + Math.random() * 0.2 : 0.18 + depth * 0.3,
+            phase: Math.random() * Math.PI * 2,
+            twinkleSpeed: 0.32 + Math.random() * 0.5,
+            velocityX: 2.2 + depth * 5.8,
+            velocityY: -0.65 + Math.random() * 1.3,
+            major: major
+          };
+        });
+        fieldParticles = Array.from({ length: count }, function (_, index) {
+          const band = index % 7;
+          const homeX = fieldWidth * ((fieldWidth < 700 ? 0.48 : 0.40) + Math.random() * 0.62);
+          const homeY = fieldHeight * (0.16 + band * 0.105) + (Math.random() + Math.random() - 1) * fieldHeight * 0.09;
+          const semanticIndex = index < targetCount ? index : -1;
+          const targetA = semanticIndex >= 0 ? targetsA[Math.floor(semanticIndex * targetsA.length / targetCount)] : null;
+          const replacementGroup = targetA ? targetsBByGroup[targetA.group] : null;
+          const targetB = targetA && replacementGroup && replacementGroup.length
+            ? replacementGroup[Math.min(replacementGroup.length - 1, Math.floor(targetA.groupIndex * replacementGroup.length / Math.max(1, targetA.groupSize)))]
+            : targetA;
+          return {
+            x: homeX,
+            y: homeY,
+            homeX: homeX,
+            homeY: homeY,
+            depth: (index % 3) / 2,
+            seed: Math.random() * 1000,
+            size: 0.4 + Math.random() * 0.72,
+            curveX: (Math.random() - 0.5) * 42,
+            curveY: (Math.random() - 0.5) * 28,
+            trailBend: (Math.random() - 0.5) * 2,
+            material: index % 31 === 0 ? 'glyph' : index % 5 === 0 ? 'stroke' : 'micro',
+            targetA: targetA,
+            targetB: targetB,
+            editable: Boolean(targetA && targetA.group === 1)
+          };
+        });
+      }
+
+      function coherencePhase(time) {
+        const elapsed = ((time - cycleStarted) % 9800 + 9800) % 9800;
+        if (elapsed < 900) return { amount: 0, replacement: 0, edit: 0 };
+        if (elapsed < 3000) return { amount: smoothstep((elapsed - 900) / 2100), replacement: 0, edit: 0 };
+        if (elapsed < 4400) return { amount: 1, replacement: 0, edit: 0 };
+        if (elapsed < 5800) return { amount: 1, replacement: smoothstep((elapsed - 4400) / 1400), edit: Math.sin(((elapsed - 4400) / 1400) * Math.PI) };
+        if (elapsed < 7600) return { amount: 1, replacement: 1, edit: 0 };
+        return { amount: 1 - smoothstep((elapsed - 7600) / 2200), replacement: 1, edit: 0 };
+      }
+
+      function renderCoherenceField(now, fixedPhase) {
+        const delta = Math.min(2, Math.max(0.2, (now - previousFrame) / 16.67));
+        const seconds = now * 0.001;
+        previousFrame = now;
+        const phase = fixedPhase || coherencePhase(now);
+        const ink = '205,205,205';
+        const semanticInk = '255,255,255';
+        coherenceContext.clearRect(0, 0, fieldWidth, fieldHeight);
+
+        const geometry = fieldGeometry();
+        const glow = coherenceContext.createRadialGradient(geometry.centerX, geometry.centerY, 0, geometry.centerX, geometry.centerY, geometry.side * 0.72);
+        glow.addColorStop(0, 'rgba(' + ink + ',0.034)');
+        glow.addColorStop(1, 'rgba(' + ink + ',0)');
+        coherenceContext.fillStyle = glow;
+        coherenceContext.fillRect(0, 0, fieldWidth, fieldHeight);
+
+        fieldStars.forEach(function (star) {
+          const parallaxX = fieldPointer.active ? (fieldPointer.x - fieldWidth / 2) * star.size * 0.002 : 0;
+          const parallaxY = fieldPointer.active ? (fieldPointer.y - fieldHeight / 2) * star.size * 0.0015 : 0;
+          const wrapPadding = 18;
+          const travelWidth = fieldWidth + wrapPadding * 2;
+          const travelHeight = fieldHeight + wrapPadding * 2;
+          const x = ((star.x + seconds * star.velocityX + parallaxX + wrapPadding) % travelWidth + travelWidth) % travelWidth - wrapPadding;
+          const y = ((star.y + seconds * star.velocityY + parallaxY + wrapPadding) % travelHeight + travelHeight) % travelHeight - wrapPadding;
+          const twinkle = 0.78 + Math.sin(seconds * star.twinkleSpeed + star.phase) * 0.22;
+          const alpha = star.alpha * twinkle;
+          if (star.major) {
+            const haloRadius = 8 + star.size * 4.2;
+            const halo = coherenceContext.createRadialGradient(x, y, 0, x, y, haloRadius);
+            halo.addColorStop(0, 'rgba(' + semanticInk + ',' + alpha * 0.28 + ')');
+            halo.addColorStop(0.14, 'rgba(' + ink + ',' + alpha * 0.16 + ')');
+            halo.addColorStop(0.44, 'rgba(' + ink + ',' + alpha * 0.045 + ')');
+            halo.addColorStop(1, 'rgba(' + ink + ',0)');
+            coherenceContext.fillStyle = halo;
+            coherenceContext.beginPath();
+            coherenceContext.arc(x, y, haloRadius, 0, Math.PI * 2);
+            coherenceContext.fill();
+          }
+          coherenceContext.fillStyle = 'rgba(' + ink + ',' + alpha + ')';
+          coherenceContext.beginPath();
+          coherenceContext.arc(x, y, star.size, 0, Math.PI * 2);
+          coherenceContext.fill();
+          if (star.major) {
+            coherenceContext.fillStyle = 'rgba(' + semanticInk + ',' + Math.min(1, 0.72 + alpha * 0.28) + ')';
+            coherenceContext.beginPath();
+            coherenceContext.arc(x, y, Math.max(0.5, star.size * 0.42), 0, Math.PI * 2);
+            coherenceContext.fill();
+          }
+        });
+
+        fieldPointer.energy += ((fieldPointer.active ? 1 : 0) - fieldPointer.energy) * 0.05;
+        const pointerRadius = Math.min(fieldWidth, fieldHeight) * 0.28;
+        fieldParticles.forEach(function (particle, index) {
+          const previousParticleX = particle.x;
+          const previousParticleY = particle.y;
+          const driftX = Math.sin(now * 0.00018 + particle.seed) * (4 + particle.depth * 5);
+          const driftY = Math.cos(now * 0.00015 + particle.seed * 1.7) * (3 + particle.depth * 4);
+          let desiredX = particle.homeX + driftX;
+          let desiredY = particle.homeY + driftY;
+          if (particle.targetA) {
+            const targetB = particle.targetB || particle.targetA;
+            const replacement = particle.editable ? phase.replacement : 0;
+            const edit = particle.editable ? phase.edit : 0;
+            const semanticX = particle.targetA.x + (targetB.x - particle.targetA.x) * replacement + particle.curveX * edit * 0.55;
+            const semanticY = particle.targetA.y + (targetB.y - particle.targetA.y) * replacement + particle.curveY * edit * 0.55;
+            desiredX += (semanticX - desiredX) * phase.amount;
+            desiredY += (semanticY - desiredY) * phase.amount;
+            const convergenceArc = Math.sin(phase.amount * Math.PI);
+            desiredX += particle.curveX * convergenceArc;
+            desiredY += particle.curveY * convergenceArc;
+          }
+          const pointerDx = particle.x - fieldPointer.x;
+          const pointerDy = particle.y - fieldPointer.y;
+          const pointerDistance = Math.sqrt(pointerDx * pointerDx + pointerDy * pointerDy) || 1;
+          const pointerInfluence = fieldPointer.energy * Math.max(0, 1 - pointerDistance / pointerRadius);
+          if (pointerInfluence > 0) {
+            desiredX += (-pointerDy / pointerDistance) * pointerInfluence * 10;
+            desiredY += (pointerDx / pointerDistance) * pointerInfluence * 10;
+          }
+          particle.x += (desiredX - particle.x) * 0.085 * delta;
+          particle.y += (desiredY - particle.y) * 0.085 * delta;
+
+          const semantic = particle.targetA ? phase.amount : 0;
+          const alpha = Math.min(0.88, 0.04 + particle.depth * 0.06 + semantic * 0.68 + pointerInfluence * 0.13);
+          const channels = semantic > 0.3 ? semanticInk : ink;
+          const trailEnergy = particle.targetA ? Math.max(Math.sin(phase.amount * Math.PI), phase.edit) : 0;
+          const motionX = particle.x - previousParticleX;
+          const motionY = particle.y - previousParticleY;
+          const motion = Math.sqrt(motionX * motionX + motionY * motionY);
+          if (trailEnergy > 0.08 && motion > 0.04 && index % 3 === 0) {
+            const trailScale = Math.min(16, 5 + motion * 5.5);
+            const tailX = particle.x - motionX * trailScale;
+            const tailY = particle.y - motionY * trailScale;
+            const bend = particle.trailBend * Math.min(2.2, 0.5 + motion);
+            const normalX = -motionY / motion;
+            const normalY = motionX / motion;
+            coherenceContext.strokeStyle = 'rgba(' + channels + ',' + alpha * trailEnergy * 0.34 + ')';
+            coherenceContext.lineWidth = 0.45 + particle.depth * 0.22;
+            coherenceContext.beginPath();
+            coherenceContext.moveTo(tailX, tailY);
+            coherenceContext.quadraticCurveTo(
+              (tailX + particle.x) * 0.5 + normalX * bend,
+              (tailY + particle.y) * 0.5 + normalY * bend,
+              particle.x,
+              particle.y
+            );
+            coherenceContext.stroke();
+          }
+          if (particle.material === 'stroke' && semantic < 0.78) {
+            coherenceContext.strokeStyle = 'rgba(' + channels + ',' + alpha * 0.7 + ')';
+            coherenceContext.lineWidth = 0.45;
+            coherenceContext.beginPath();
+            coherenceContext.moveTo(particle.x, particle.y);
+            coherenceContext.lineTo(particle.x + 3 + particle.depth * 4, particle.y + Math.sin(particle.seed) * 2);
+            coherenceContext.stroke();
+          } else if (particle.material === 'glyph' && semantic < 0.4) {
+            coherenceContext.font = (6 + particle.depth * 2) + 'px ui-monospace, SFMono-Regular, Menlo, monospace';
+            coherenceContext.fillStyle = 'rgba(' + channels + ',' + alpha * 0.46 + ')';
+            coherenceContext.fillText(maskGlyphs[index % maskGlyphs.length], particle.x, particle.y);
+          } else {
+            const size = particle.size * (0.75 + particle.depth * 0.45);
+            coherenceContext.fillStyle = 'rgba(' + channels + ',' + alpha + ')';
+            coherenceContext.fillRect(particle.x, particle.y, size, size * 0.78);
+          }
+        });
+
+      }
+
+      function drawCoherenceField(now) {
+        animationFrame = 0;
+        renderCoherenceField(now);
+        if (!document.hidden && !reduceCoherenceMotion.matches) animationFrame = requestAnimationFrame(drawCoherenceField);
+      }
+
+      function startCoherenceField() {
+        if (!animationFrame && !document.hidden && !reduceCoherenceMotion.matches) animationFrame = requestAnimationFrame(drawCoherenceField);
+      }
+
+      function drawReducedCoherenceField() {
+        renderCoherenceField(performance.now(), { amount: 0.78, replacement: 0.35, edit: 0 });
+      }
+
+      function updateFieldPointer(event) {
+        const bounds = coherenceHero.getBoundingClientRect();
+        fieldPointer.x = event.clientX - bounds.left;
+        fieldPointer.y = event.clientY - bounds.top;
+        fieldPointer.active = true;
+      }
+
+      coherenceHero.addEventListener('pointerenter', updateFieldPointer);
+      coherenceHero.addEventListener('pointermove', updateFieldPointer);
+      coherenceHero.addEventListener('pointerleave', function () { fieldPointer.active = false; });
+      const coherenceResizeObserver = new ResizeObserver(function () {
+        rebuildCoherenceField();
+        if (reduceCoherenceMotion.matches) drawReducedCoherenceField();
+      });
+      coherenceResizeObserver.observe(coherenceHero);
+      rebuildCoherenceField();
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(rebuildCoherenceField);
+      if (reduceCoherenceMotion.matches) drawReducedCoherenceField();
+      else startCoherenceField();
+      reduceCoherenceMotion.addEventListener('change', function (event) {
+        if (animationFrame) cancelAnimationFrame(animationFrame);
+        animationFrame = 0;
+        previousFrame = performance.now();
+        cycleStarted = previousFrame;
+        if (event.matches) drawReducedCoherenceField();
+        else startCoherenceField();
+      });
+      document.addEventListener('visibilitychange', function () {
+        if (document.hidden && animationFrame) {
+          cancelAnimationFrame(animationFrame);
+          animationFrame = 0;
+        } else {
+          previousFrame = performance.now();
+          startCoherenceField();
+        }
+      });
+    }
   </script>
 </body>
 </html>
