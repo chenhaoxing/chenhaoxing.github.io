@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
   <title>Haoxing Chen's Homepage</title>
   <link rel="shortcut icon" type="image/x-icon" href="./Files/mambaicon.png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -13,12 +14,24 @@
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/solid.min.js"></script>
   <script defer src="font-awesome/js/fontawesome.min.js"></script>
   <script>
-    try {
-      if (localStorage.getItem('haoxing-theme') === 'light') document.documentElement.dataset.theme = 'light';
-    } catch (e) {}
+    (function () {
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
+      const syncSystemTheme = function () {
+        document.documentElement.dataset.theme = systemTheme.matches ? 'dark' : 'light';
+      };
+      syncSystemTheme();
+      if (systemTheme.addEventListener) systemTheme.addEventListener('change', syncSystemTheme);
+      else systemTheme.addListener(syncSystemTheme);
+      window.addEventListener('pageshow', syncSystemTheme);
+      window.addEventListener('focus', syncSystemTheme);
+      document.addEventListener('visibilitychange', function () {
+        if (!document.hidden) syncSystemTheme();
+      });
+    })();
   </script>
   <style>
     :root {
+      color-scheme: dark;
       --primary: #c0c8d4;
       --primary-light: rgba(192,200,212,0.1);
       --primary-dark: #a0aab8;
@@ -90,24 +103,6 @@
       text-align: center;
       backdrop-filter: blur(10px);
     }
-    .theme-toggle {
-      position: absolute; top: 14px; right: 14px; z-index: 3;
-      width: 34px; height: 34px; border-radius: 50%;
-      display: inline-flex; align-items: center; justify-content: center;
-      border: 1px solid var(--border);
-      background: rgba(192,200,212,0.05);
-      color: var(--text-secondary);
-      font: inherit; font-size: 1.05em; line-height: 1;
-      cursor: pointer;
-      transition: color var(--transition), background var(--transition), border-color var(--transition), transform var(--transition);
-    }
-    .theme-toggle:hover {
-      color: var(--text);
-      background: rgba(192,200,212,0.11);
-      border-color: var(--border-hover);
-      transform: translateY(-1px);
-    }
-    .theme-toggle:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
     .profile-photo-wrapper {
       position: relative;
       width: 136px; height: 136px; margin: 0 auto 14px;
@@ -434,7 +429,7 @@
     .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.9s ease, transform 0.9s ease; }
     .fade-in.visible-section { opacity: 1; transform: translateY(0); }
 
-    /* Light theme */
+    /* Light palette; applied when the system-theme listener selects light mode. */
     html[data-theme="light"] {
       color-scheme: light;
       --primary: #3f4752;
@@ -458,9 +453,7 @@
       --shadow-lg: 0 18px 48px rgba(32,37,43,0.13);
       --shadow-glow: 0 0 30px rgba(63,71,82,0.035);
     }
-    html[data-theme="light"] body {
-      background-image: none;
-    }
+    html[data-theme="light"] body { background-image: none; }
     html[data-theme="light"] .profile-card,
     html[data-theme="light"] .nav-section {
       background: linear-gradient(165deg, #ffffff 0%, #fafbfc 100%);
@@ -470,13 +463,10 @@
       -webkit-background-clip: text;
       background-clip: text;
     }
-    html[data-theme="light"] .theme-toggle,
     html[data-theme="light"] .stat-chip,
     html[data-theme="light"] .social-links a,
     html[data-theme="light"] .pub-btn,
-    html[data-theme="light"] .profile-quote {
-      background: rgba(63,71,82,0.065);
-    }
+    html[data-theme="light"] .profile-quote { background: rgba(63,71,82,0.065); }
     html[data-theme="light"] .nav-list a:hover,
     html[data-theme="light"] .nav-list a.is-active {
       background: linear-gradient(135deg, rgba(63,71,82,0.13), rgba(63,71,82,0.06));
@@ -528,7 +518,6 @@
     <aside class="sidebar">
       <div class="sidebar-inner">
         <div class="profile-card">
-          <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light theme" aria-pressed="false" title="Switch to light theme"><span id="themeToggleIcon" aria-hidden="true">&#9728;</span></button>
           <div class="profile-photo-wrapper">
             <img src="./Files/chx.jpg" alt="Haoxing Chen">
           </div>
@@ -677,23 +666,6 @@
   </div>
   <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
   <script>
-    const themeToggle = document.getElementById('themeToggle');
-    const themeToggleIcon = document.getElementById('themeToggleIcon');
-    function applyTheme(theme) {
-      const isLight = theme === 'light';
-      document.documentElement.dataset.theme = isLight ? 'light' : 'dark';
-      themeToggleIcon.textContent = isLight ? '\u263E' : '\u2600';
-      themeToggle.setAttribute('aria-pressed', String(isLight));
-      themeToggle.setAttribute('aria-label', isLight ? 'Switch to dark theme' : 'Switch to light theme');
-      themeToggle.title = isLight ? 'Switch to dark theme' : 'Switch to light theme';
-    }
-    applyTheme(document.documentElement.dataset.theme === 'light' ? 'light' : 'dark');
-    themeToggle.addEventListener('click', function() {
-      const nextTheme = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
-      applyTheme(nextTheme);
-      try { localStorage.setItem('haoxing-theme', nextTheme); } catch (e) {}
-    });
-
     const navLinks = document.querySelectorAll('.nav-list a');
     const sections = document.querySelectorAll('.content-section[id]');
     function updateNav() {
