@@ -45,6 +45,8 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; scroll-padding-top: 20px; }
     body {
+      position: relative;
+      min-height: 100vh;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       background: var(--bg);
       color: var(--text);
@@ -61,6 +63,16 @@
     }
     a { color: var(--primary); text-decoration: none; transition: color var(--transition); }
     a:hover { color: var(--accent); }
+
+    .page-starfield {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      display: block;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+    }
 
     /* Scroll progress bar */
     .scroll-progress {
@@ -120,23 +132,7 @@
       font-size: 0.92em;
       line-height: 1.7;
     }
-    .coherence-readout {
-      position: absolute;
-      z-index: 1;
-      right: 0;
-      bottom: 14px;
-      left: 58%;
-      display: flex;
-      justify-content: space-between;
-      color: var(--text-muted);
-      font-size: 0.62em;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      pointer-events: none;
-    }
-
-    .page-wrapper { max-width: 1240px; margin: 0 auto; padding: 36px 28px; display: flex; gap: 48px; }
+    .page-wrapper { position: relative; z-index: 1; max-width: 1240px; margin: 0 auto; padding: 36px 28px; display: flex; gap: 48px; }
 
     /* Sidebar */
     .sidebar { width: 290px; flex-shrink: 0; }
@@ -457,6 +453,7 @@
     /* Back to top */
     .back-to-top {
       position: fixed; bottom: 30px; right: 30px;
+      z-index: 50;
       width: 46px; height: 46px; border-radius: 50%;
       background: linear-gradient(135deg, rgba(192,200,212,0.85), rgba(228,232,238,0.85));
       backdrop-filter: blur(8px);
@@ -498,12 +495,12 @@
       .agi-hero { min-height: 460px; align-items: flex-start; padding-top: 28px; }
       .agi-hero-copy { width: 78%; }
       .agi-hero-title { font-size: clamp(2.4em, 10vw, 4em); }
-      .coherence-readout { display: none; }
     }
   </style>
 </head>
 
 <body>
+  <canvas class="page-starfield" id="pageStarfield" aria-hidden="true"></canvas>
   <div class="scroll-progress" id="scrollProgress"></div>
   <div class="page-wrapper">
     <aside class="sidebar">
@@ -540,18 +537,6 @@
       </div>
     </aside>
     <main class="main-content">
-      <section class="agi-hero" id="agiHero" aria-labelledby="agiHeroTitle">
-        <canvas class="coherence-field" id="coherenceField" aria-hidden="true"></canvas>
-        <div class="agi-hero-copy">
-          <p class="agi-hero-kicker">AGI / Multimodal Agents</p>
-          <h2 class="agi-hero-title" id="agiHeroTitle">From Multimodal Perception to General Intelligence.</h2>
-          <p class="agi-hero-summary">Exploring foundation models and long-horizon agents that turn multimodal understanding into purposeful action.</p>
-        </div>
-        <div class="coherence-readout" aria-hidden="true">
-          <span>Noise → Coherence</span>
-          <span>Perceive · Reason · Act</span>
-        </div>
-      </section>
       <div class="hiring-banner"><span class="hiring-dot"></span> We are seeking self-motivated PhD students or outstanding master students for research internships focused on Foundation Model Architecture. Feel free to contact us.</div>
       <section class="content-section fade-in" id="intro">
         <h2 class="section-title">About Me</h2>
@@ -688,6 +673,114 @@
     const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible-section'); }); }, { threshold: 0.08 });
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
+    const pageStarfield = document.getElementById('pageStarfield');
+    const pageStarContext = pageStarfield ? pageStarfield.getContext('2d', { alpha: true }) : null;
+    if (pageStarfield && pageStarContext) {
+      const reducePageStarMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const pageStars = [];
+      let pageStarWidth = 1;
+      let pageStarHeight = 1;
+      let pageStarFrame = 0;
+      let pageStarPreviousTime = performance.now();
+
+      function rebuildPageStars() {
+        const ratio = Math.min(window.devicePixelRatio || 1, 1.75);
+        pageStarWidth = Math.max(1, window.innerWidth);
+        pageStarHeight = Math.max(1, window.innerHeight);
+        pageStarfield.width = Math.round(pageStarWidth * ratio);
+        pageStarfield.height = Math.round(pageStarHeight * ratio);
+        pageStarContext.setTransform(ratio, 0, 0, ratio, 0, 0);
+        const starCount = pageStarWidth < 700
+          ? Math.min(110, Math.max(72, Math.round((pageStarWidth * pageStarHeight) / 6200)))
+          : Math.min(210, Math.max(125, Math.round((pageStarWidth * pageStarHeight) / 6200)));
+        pageStars.length = 0;
+        for (let index = 0; index < starCount; index += 1) {
+          const depth = 0.35 + Math.random() * 0.65;
+          const major = index < 8;
+          const medium = !major && index < 26;
+          pageStars.push({
+            x: Math.random() * pageStarWidth,
+            y: Math.random() * pageStarHeight,
+            size: major ? 1.3 + Math.random() * 0.55 : medium ? 0.8 + Math.random() * 0.4 : 0.34 + depth * 0.62,
+            alpha: major ? 0.72 + Math.random() * 0.2 : medium ? 0.38 + Math.random() * 0.2 : 0.14 + depth * 0.26,
+            phase: Math.random() * Math.PI * 2,
+            twinkleSpeed: 0.28 + Math.random() * 0.46,
+            velocityX: 1.8 + depth * 4.2,
+            velocityY: -0.5 + Math.random(),
+            major: major
+          });
+        }
+        drawPageStars(performance.now(), false);
+      }
+
+      function drawPageStars(now, advance) {
+        const elapsed = advance ? Math.min(0.05, Math.max(0, (now - pageStarPreviousTime) / 1000)) : 0;
+        pageStarPreviousTime = now;
+        const seconds = now * 0.001;
+        pageStarContext.clearRect(0, 0, pageStarWidth, pageStarHeight);
+        pageStars.forEach(function (star) {
+          if (advance) {
+            star.x += star.velocityX * elapsed;
+            star.y += star.velocityY * elapsed;
+            if (star.x > pageStarWidth + 18) star.x = -18;
+            if (star.y > pageStarHeight + 18) star.y = -18;
+            if (star.y < -18) star.y = pageStarHeight + 18;
+          }
+          const twinkle = 0.8 + Math.sin(seconds * star.twinkleSpeed + star.phase) * 0.2;
+          const alpha = star.alpha * twinkle;
+          if (star.major) {
+            const haloRadius = 8 + star.size * 4.2;
+            const halo = pageStarContext.createRadialGradient(star.x, star.y, 0, star.x, star.y, haloRadius);
+            halo.addColorStop(0, 'rgba(255,255,255,' + alpha * 0.28 + ')');
+            halo.addColorStop(0.14, 'rgba(205,205,205,' + alpha * 0.16 + ')');
+            halo.addColorStop(0.44, 'rgba(205,205,205,' + alpha * 0.045 + ')');
+            halo.addColorStop(1, 'rgba(205,205,205,0)');
+            pageStarContext.fillStyle = halo;
+            pageStarContext.beginPath();
+            pageStarContext.arc(star.x, star.y, haloRadius, 0, Math.PI * 2);
+            pageStarContext.fill();
+          }
+          pageStarContext.fillStyle = 'rgba(205,205,205,' + alpha + ')';
+          pageStarContext.beginPath();
+          pageStarContext.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+          pageStarContext.fill();
+          if (star.major) {
+            pageStarContext.fillStyle = 'rgba(255,255,255,' + Math.min(1, 0.72 + alpha * 0.28) + ')';
+            pageStarContext.beginPath();
+            pageStarContext.arc(star.x, star.y, Math.max(0.5, star.size * 0.42), 0, Math.PI * 2);
+            pageStarContext.fill();
+          }
+        });
+      }
+
+      function animatePageStars(now) {
+        pageStarFrame = 0;
+        drawPageStars(now, true);
+        startPageStars();
+      }
+
+      function startPageStars() {
+        if (!pageStarFrame && !document.hidden && !reducePageStarMotion.matches) {
+          pageStarFrame = requestAnimationFrame(animatePageStars);
+        }
+      }
+
+      function syncPageStarMotion() {
+        if (pageStarFrame) cancelAnimationFrame(pageStarFrame);
+        pageStarFrame = 0;
+        pageStarPreviousTime = performance.now();
+        if (reducePageStarMotion.matches) drawPageStars(pageStarPreviousTime, false);
+        else startPageStars();
+      }
+
+      window.addEventListener('resize', rebuildPageStars);
+      if (reducePageStarMotion.addEventListener) reducePageStarMotion.addEventListener('change', syncPageStarMotion);
+      else reducePageStarMotion.addListener(syncPageStarMotion);
+      document.addEventListener('visibilitychange', syncPageStarMotion);
+      rebuildPageStars();
+      startPageStars();
+    }
+
     const coherenceHero = document.getElementById('agiHero');
     const coherenceCanvas = document.getElementById('coherenceField');
     const coherenceContext = coherenceCanvas ? coherenceCanvas.getContext('2d', { alpha: true }) : null;
@@ -778,13 +871,10 @@
         coherenceCanvas.width = Math.round(fieldWidth * ratio);
         coherenceCanvas.height = Math.round(fieldHeight * ratio);
         coherenceContext.setTransform(ratio, 0, 0, ratio, 0, 0);
-        const targetsA = sampleWords(initialWords);
-        const targetsB = sampleWords(evolvedWords);
-        const targetsBByGroup = evolvedWords.map(function (_, group) {
-          return targetsB.filter(function (target) { return target.group === group; });
-        });
-        const count = Math.min(2800, Math.max(1500, Math.round((fieldWidth * fieldHeight) / 240)));
-        const targetCount = Math.min(count, targetsA.length);
+        const targetsA = [];
+        const targetsBByGroup = [];
+        const count = 0;
+        const targetCount = 0;
         const starCount = fieldWidth < 700
           ? Math.min(84, Math.max(60, Math.round((fieldWidth * fieldHeight) / 5200)))
           : Math.min(150, Math.max(100, Math.round((fieldWidth * fieldHeight) / 5200)));
