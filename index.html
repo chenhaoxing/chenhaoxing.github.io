@@ -367,6 +367,39 @@
     .exp-info p { font-size: 0.88em; color: var(--text-secondary); margin: 0; }
 
     /* Publications */
+    .publication-stats {
+      display: flex; align-items: center; flex-wrap: wrap; gap: 12px 18px;
+      margin: 0 0 28px;
+    }
+    .publication-stats-label {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1em; font-weight: 700; color: var(--primary);
+    }
+    .publication-stats-list {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      list-style: none; margin: 0; padding: 0;
+    }
+    .publication-stat {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 14px; border-radius: 999px;
+      border: 2px solid rgba(192,200,212,0.5);
+      background: var(--primary-light); color: var(--accent);
+      font-size: 0.92em; font-weight: 600; white-space: nowrap;
+    }
+    .publication-stat b { font-weight: 700; font-variant-numeric: tabular-nums; }
+    .publication-stat-venue {
+      border-color: hsla(var(--venue-hue), 65%, 68%, 0.65);
+      background: hsla(var(--venue-hue), 65%, 60%, 0.1);
+      color: hsl(var(--venue-hue), 75%, 78%);
+    }
+    .publication-stat-tech {
+      border-color: rgba(212,180,120,0.65);
+      background: var(--gold-glow); color: var(--gold);
+    }
+    .publication-stat-total {
+      border-color: var(--gold); background: var(--gold);
+      color: var(--bg); font-weight: 700;
+    }
     .pub-category-title {
       font-size: 1.15em; font-weight: 600; color: var(--text);
       margin: 36px 0 22px;
@@ -604,6 +637,26 @@
       </section>
       <section class="content-section fade-in" id="publications">
         <h2 class="section-title">Selected Publications <span class="title-links"><a href="https://scholar.google.co.uk/citations?user=BnS7HzAAAAAJ&hl=en" class="pub-btn" target="_blank">Google Scholar</a> <a href="https://dblp.org/pid/168/5619.html" class="pub-btn" target="_blank">DBLP</a></span></h2>
+        <div class="publication-stats" role="group" aria-label="Publication statistics">
+          <span class="publication-stats-label">Publication Statistics:</span>
+          <ul class="publication-stats-list" id="publicationStatsList">
+            <li class="publication-stat publication-stat-venue" style="--venue-hue: 5">ACM MM: <b>4</b></li>
+            <li class="publication-stat publication-stat-venue" style="--venue-hue: 45">CVPR: <b>3</b></li>
+            <li class="publication-stat publication-stat-venue" style="--venue-hue: 256">NeurIPS: <b>3</b></li>
+            <li class="publication-stat publication-stat-venue" style="--venue-hue: 50">EMNLP: <b>2</b></li>
+            <li class="publication-stat publication-stat-venue" style="--venue-hue: 1">ICASSP: <b>2</b></li>
+            <li class="publication-stat publication-stat-venue" style="--venue-hue: 233">ICML: <b>2</b></li>
+            <li class="publication-stat publication-stat-venue" style="--venue-hue: 306" title="Sci. China Inf. Sci.">SCIS: <b>2</b></li>
+            <li class="publication-stat publication-stat-venue" style="--venue-hue: 88">AAAI: <b>1</b></li>
+            <li class="publication-stat publication-stat-venue" style="--venue-hue: 289">ECCV: <b>1</b></li>
+            <li class="publication-stat publication-stat-venue" style="--venue-hue: 208">ICLR: <b>1</b></li>
+            <li class="publication-stat publication-stat-venue" style="--venue-hue: 180" title="International Journal of Computer Vision">IJCV: <b>1</b></li>
+            <li class="publication-stat publication-stat-venue" style="--venue-hue: 359">Pattern Recognition: <b>1</b></li>
+            <li class="publication-stat publication-stat-venue" style="--venue-hue: 314" title="IEEE TCSVT">TCSVT: <b>1</b></li>
+            <li class="publication-stat publication-stat-tech">Tech Report: <b>6</b></li>
+            <li class="publication-stat publication-stat-total">Total: <b>30</b></li>
+          </ul>
+        </div>
         <h3 class="pub-category-title">Tech Report Publications</h3>
 		<div class="pub-item"><div class="pub-thumbnail"><img src="./Files/LLaDAUI.png" alt="LLaDAUI"></div><div class="pub-info"><div class="pub-title">LLaDA-UI: Bringing Block-wise Diffusion to Vision-Language GUI Agents</div><div class="pub-authors">Zhangxuan Gu<sup>#</sup>, <b>Haoxing Chen</b><sup>#</sup>, Qi Qin<sup>#</sup>, et al.</div><div class="pub-venue"><span class="pub-venue-text">arXiv 2609.13287, 2026.</span></div><div class="pub-links"><a href="https://arxiv.org/pdf/2609.13287.pdf" class="pub-btn" target="_blank">Paper</a><a href="https://huggingface.co/inclusionAI/LLaDA-UI" class="pub-btn" target="_blank">Models</a><a href="https://github.com/inclusionAI/LLaDA-UI" class="pub-btn" target="_blank">Code</a></div></div></div>
 		<div class="pub-item"><div class="pub-thumbnail"><img src="./Files/LLaDAImage.png" alt="LLaDAImage"></div><div class="pub-info"><div class="pub-title">LLaDA-Image: Building Strong Image Generators with Fully Open Training Recipes</div><div class="pub-authors"><b>Haoxing Chen</b><sup>#</sup>, Kun Chen<sup>#</sup>, Zhenglin Cheng<sup>#</sup>, et al.</div><div class="pub-venue"><span class="pub-venue-text">arXiv 2609.03796, 2026.</span></div><div class="pub-links"><a href="https://arxiv.org/pdf/2609.03796.pdf" class="pub-btn" target="_blank">Paper</a><a href="https://huggingface.co/collections/inclusionAI/llada-image" class="pub-btn" target="_blank">Models</a><a href="https://github.com/inclusionAI/LLaDA-Image" class="pub-btn" target="_blank">Code</a></div></div></div>
@@ -662,6 +715,50 @@
   </div>
   <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
   <script>
+    // Merge years of the same venue; only unpublished arXiv papers count as reports.
+    const publicationCounts = new Map();
+    const publicationItems = document.querySelectorAll('#publications > .pub-item');
+    const venueAliases = {
+      'International Journal of Computer Vision': 'IJCV',
+      'Sci. China Inf. Sci.': 'SCIS',
+      'IEEE TCSVT': 'TCSVT'
+    };
+    let techReportCount = 0;
+    publicationItems.forEach(item => {
+      const venueText = item.querySelector('.pub-venue-text')?.textContent.trim() || 'Other';
+      if (/^arXiv\b/i.test(venueText)) {
+        techReportCount += 1;
+        return;
+      }
+      const venueName = venueText.replace(/[\s,]+\d{4}\.?$/, '').trim();
+      const venue = venueAliases[venueName] || venueName;
+      publicationCounts.set(venue, (publicationCounts.get(venue) || 0) + 1);
+    });
+    const publicationStatsList = document.getElementById('publicationStatsList');
+    publicationStatsList.replaceChildren();
+    function addPublicationStat(label, count, category, fullName) {
+      const stat = document.createElement('li');
+      stat.className = 'publication-stat publication-stat-' + category;
+      stat.append(label + ': ');
+      const value = document.createElement('b');
+      value.textContent = count;
+      stat.append(value);
+      if (category === 'venue') {
+        const hue = Array.from(label).reduce((hash, letter) => (hash * 31 + letter.charCodeAt(0)) % 360, 0);
+        stat.style.setProperty('--venue-hue', hue);
+        if (fullName) stat.title = fullName;
+      }
+      publicationStatsList.append(stat);
+    }
+    Array.from(publicationCounts)
+      .sort(([nameA, countA], [nameB, countB]) => countB - countA || nameA.localeCompare(nameB, 'en'))
+      .forEach(([venue, count]) => {
+        const alias = Object.entries(venueAliases).find(([, shortName]) => shortName === venue);
+        addPublicationStat(venue, count, 'venue', alias?.[0]);
+      });
+    addPublicationStat('Tech Report', techReportCount, 'tech');
+    addPublicationStat('Total', publicationItems.length, 'total');
+
     const navLinks = document.querySelectorAll('.nav-list a');
     const sections = document.querySelectorAll('.content-section[id]');
     function updateNav() {
